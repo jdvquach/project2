@@ -7,7 +7,8 @@ class AttractionsController < ApplicationController
   end
 
   def index
-    @attractions = Attraction.all
+    # @attractions = Attraction.all
+    render json: Attraction.all
   end
 
   def show
