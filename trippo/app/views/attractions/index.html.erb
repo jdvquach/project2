@@ -1,2 +1,15 @@
-<h1>Attractions#index</h1>
-<p>Find me in app/views/attractions/index.html.erb</p>
+<h2>All attractions</h2>
+
+
+<ul>
+
+  <% @attractions.each do |attraction| %>
+    <li>
+
+      <%= link_to attraction.name, attraction_path(attraction.id) %>
+
+
+    </li>
+  <% end %>
+
+</ul>
