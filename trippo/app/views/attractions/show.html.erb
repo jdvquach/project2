@@ -1,2 +1,38 @@
-<h1>Attractions#show</h1>
-<p>Find me in app/views/attractions/show.html.erb</p>
+<h2>Attraction: <%=@attraction.name %></h2>
+
+<div>
+
+  <h4>Address: <%= @attraction.address %></h4>
+  <%= image_tag @attraction.image %>
+
+
+</div>
+
+
+
+<!--The div element for the map -->
+<div id="map"></div>
+
+
+
+<script>
+
+// Initialize and add the map
+function initMap() {
+  // The location of marker
+  var marker = {lat: <%= @attraction.lat %>, lng: <%= @attraction.long %>};
+  // The map, centered at marker
+  var map = new google.maps.Map(
+      document.getElementById('map'), {zoom: 9, center: marker});
+  // The marker, positioned at marker
+  var marker = new google.maps.Marker({position: marker, map: map});
+}
+    </script>
+ <!--Load the API from the specified URL
+ * The async attribute allows the browser to render the page while the API loads
+ * The key parameter will contain your own API key (which is not needed for this tutorial)
+ * The callback parameter executes the initMap() function
+ -->
+ <script async defer
+ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfdeYzd23jyR3fKx0oRtdlqCDK-NEzwcI&callback=initMap">
+ </script>
