@@ -6,9 +6,11 @@ class RegionsController < ApplicationController
   end
 
   def index
+      @regions = Region.all
   end
 
   def show
+    @regions = Region.find params[:id]
   end
 
   def edit
@@ -19,4 +21,10 @@ class RegionsController < ApplicationController
 
   def destroy
   end
+
+  private
+  def region_params
+    params.require(:region).permit(:name, :image, :region_id)
+  end
+
 end
