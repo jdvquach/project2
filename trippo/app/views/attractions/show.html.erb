@@ -5,6 +5,7 @@
   <h4>Address: <%= @attraction.address %></h4>
   <h4>Current tempertature: <%= @weather['main']['temp'] %></h4>
   <h4>Weather station: <%=@weather['name']  %></h4>
+  <h3><%= @attraction.description %></h3>
   <%= image_tag @attraction.image %>
 </div>
 

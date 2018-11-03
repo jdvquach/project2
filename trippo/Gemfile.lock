@@ -93,13 +93,10 @@ GEM
     ffi (1.9.25)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
-<<<<<<< HEAD
-    httparty (0.16.2)
-      multi_xml (>= 0.5.2)
-=======
     http-cookie (1.0.3)
       domain_name (~> 0.5)
->>>>>>> 4930e0ba96b39f25961af05b9068798063bbc15b
+    httparty (0.16.2)
+      multi_xml (>= 0.5.2)
     i18n (1.1.1)
       concurrent-ruby (~> 1.0)
     io-like (0.3.0)
@@ -131,11 +128,8 @@ GEM
     minitest (5.11.3)
     msgpack (1.2.4)
     multi_json (1.13.1)
-<<<<<<< HEAD
     multi_xml (0.6.0)
-=======
     netrc (0.11.0)
->>>>>>> 4930e0ba96b39f25961af05b9068798063bbc15b
     nio4r (2.3.1)
     nokogiri (1.8.5)
       mini_portile2 (~> 2.3.0)

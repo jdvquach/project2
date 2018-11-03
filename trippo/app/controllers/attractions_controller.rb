@@ -3,10 +3,13 @@ class AttractionsController < ApplicationController
 
 
   def new
-
+    @attraction = Attraction.create
   end
 
   def create
+    @attraction = Attraction.new(attraction_params)
+    @attraction.save
+    redirect_to attractions_path
   end
 
   def index
@@ -27,11 +30,23 @@ class AttractionsController < ApplicationController
   end
 
   def edit
+    @attraction = Attraction.find(params[:id])
   end
 
   def update
+    attraction = Attraction.find(params[:id])
+    attraction.update conflict_params  #update using partial attraction_params
+    redirect_to attraction_path(attraction.id)
   end
 
   def destroy
+    attraction = Attraction.find(params[:id])
+    attraction.destroy
+    redirect_to attractions_path
+  end
+
+  private
+  def conflict_params
+    params.require(:attraction).permit(:name, :address, :lat, :long, :description, :image, :region_id)  #permission to enter and update these fields
   end
 end
