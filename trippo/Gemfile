@@ -58,6 +58,9 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'pry-rails'
 gem 'rack-cors', require: 'rack/cors'
 
+
+
+gem 'httparty'
 gem 'cloudinary'
 gem 'bootstrap', '~> 4.1.3'
 
