@@ -15,7 +15,7 @@ class UsersController < ApplicationController
           @user.image = response["public_id"]
           @user.save
         end
-        redirect_to user_path(@user)   # go to the show page for this user
+        redirect_to regions_path(@user)   # go to the show page for this user
       else
         # Account not created: show error
 

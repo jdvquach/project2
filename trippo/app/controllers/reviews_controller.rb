@@ -40,7 +40,12 @@ class ReviewsController < ApplicationController
 
   def destroy
     @review = Review.find params[:id]
-    @review.destroy
+
+
+    if @review.user == @current_user &&  @current_user.present?
+
+      @review.destroy
+    end
     redirect_to (attraction_path(@review.attraction))
   end
 
