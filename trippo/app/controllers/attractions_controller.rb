@@ -3,7 +3,7 @@ class AttractionsController < ApplicationController
 
 
   def new
-    @attraction = Attraction.create
+    @attraction = Attraction.new
   end
 
   def create
@@ -46,7 +46,7 @@ class AttractionsController < ApplicationController
   end
 
   private
-  def conflict_params
+  def attraction_params
     params.require(:attraction).permit(:name, :address, :lat, :long, :description, :image, :region_id)  #permission to enter and update these fields
   end
 end
