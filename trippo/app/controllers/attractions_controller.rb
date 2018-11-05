@@ -45,8 +45,15 @@ class AttractionsController < ApplicationController
     redirect_to attractions_path
   end
 
+  def search
+    @query = "#{params[:query]}"
+    @attractions = Attraction.where('name iLIKE :search OR description iLIKE :search OR tags iLIKE :search ', search: "%#{@query}%")
+  
+  end
+
   private
   def attraction_params
     params.require(:attraction).permit(:name, :address, :lat, :long, :description, :image, :region_id)  #permission to enter and update these fields
   end
+
 end

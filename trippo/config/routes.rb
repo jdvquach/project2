@@ -10,4 +10,6 @@ Rails.application.routes.draw do
   get "/login" => "session#new"
   post "/login" => "session#create"
   delete "/login" => "session#destroy"
+
+  post "attractions/search" => "attractions#search", as: 'search_attractions'
 end

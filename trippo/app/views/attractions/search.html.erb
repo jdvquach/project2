@@ -1,0 +1,6 @@
+<h2>Search results for "<%= @query %>"</h2>
+<ul>
+<%= @attractions.each do |attraction| %>
+  <li><%=link_to  attraction.name , attraction_path(attraction.id)%></li>
+<% end %>
+</ul>
