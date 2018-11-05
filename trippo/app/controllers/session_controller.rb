@@ -14,7 +14,7 @@ class SessionController < ApplicationController
       session[:user_id] = user.id
       #redirect_to user_path( user.id )
       redirect_to ( root_path )
-      redirect_to regions_path( user.id )
+      #redirect_to regions_path( user.id )
     else
       # Bad credentials, i.e. unsuccessful login
 
