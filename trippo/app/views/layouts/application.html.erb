@@ -18,8 +18,13 @@
   <a class="navbar-brand" href="#">
     <img class="test" src="https://picsum.photos/200/300/?random" height="60" width="60" alt="User">
   </a>
-  <%= @current_user.name %>
 </nav>
+<% if @current_user.present? %>
+<%= @current_user.name %>
+<% end %>
+
+
+
 
     <h1>Trippo</h1>
         <% if @current_user.present? %>
