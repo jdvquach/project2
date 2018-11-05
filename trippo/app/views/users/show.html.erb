@@ -1,2 +1,27 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div>
+<h2><%= @user.name %></h2>
+
+<div>
+  <%= link_to 'Edit Account', edit_user_path(@user) %>
+  |
+  <%= link_to 'New Tip/Trick', new_post_path %>
+  |
+  <%= link_to 'Delete Account', user_path(@user), method: 'delete' %>
+</div>
+<br>
+
+<strong>Name:</strong> <%= @user.name %><br>
+
+<%= cl_image_tag @user.image, alt: @user.name, class: 'img-responsive img-thumbnail pull-left' %>
+
+<div>
+
+  <h3>Your tips/tricks:</h3>
+  <ul>
+  <% @user.posts.each do |post| %>
+    <li>
+      <%= link_to post.title, post_path(post.id) %>
+    </li>
+  <% end %>
+  </ul>
+</div>

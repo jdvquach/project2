@@ -3,9 +3,10 @@
 <div>
 
   <h4>Address: <%= @attraction.address %></h4>
+  <h4>Current tempertature: <%= @weather['main']['temp'] %></h4>
+  <h4>Weather station: <%=@weather['name']  %></h4>
+  <h3><%= @attraction.description %></h3>
   <%= image_tag @attraction.image %>
-
-
 </div>
 
 
@@ -35,4 +36,11 @@ function initMap() {
  -->
  <script async defer
  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfdeYzd23jyR3fKx0oRtdlqCDK-NEzwcI&callback=initMap">
+ </script>
+
+ <script>
+
+
+
+
  </script>
