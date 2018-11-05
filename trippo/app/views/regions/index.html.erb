@@ -1,11 +1,9 @@
 
-<h1>Region</h1>
+<h1>PLACES TO VISIT IN NSW</h1>
   <% @regions.each do |region| %>
-      <a href="<%= region_path(region.id) %>">
-      <%= cl_image_tag @region.image %>
-      <br>
-      <%= @region.name %>
-      </a>
-  <% end %>
+    <%= link_to region.name, region_path(region.id) %>
+    <br>
+    <%= cl_image_tag region.image, class:"hgsbj"%>
 
-<br>
+    <br>
+  <% end %>
