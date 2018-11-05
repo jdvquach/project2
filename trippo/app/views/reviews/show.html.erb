@@ -1,2 +1,12 @@
-<h1>Reviews#show</h1>
-<p>Find me in app/views/reviews/show.html.erb</p>
+
+
+<h1>Review by <%= @review.user.name %> for
+  <%= link_to @review.attraction.name, attraction_path(@review.attraction.id)%>
+</h1>
+
+    <% if @review.user == @current_user %>
+     <%= link_to 'DELETE', review_path, method: 'delete' %>
+    <% end %>
+<div>
+  <p><%= @review.comment %></p>
+</div>
