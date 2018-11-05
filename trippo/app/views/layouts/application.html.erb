@@ -11,6 +11,21 @@
   </head>
 
   <body>
+
+
+<!-- Just an image -->
+<nav class="navbar navbar-dark primary-color special-img">
+  <a class="navbar-brand" href="#">
+    <img class="test" src="https://picsum.photos/200/300/?random" height="60" width="60" alt="User">
+  </a>
+</nav>
+<% if @current_user.present? %>
+<%= @current_user.name %>
+<% end %>
+
+
+
+
     <h1>Trippo</h1>
         <% if @current_user.present? %>
         <div>Welcome, <%= @current_user.name %></div>
@@ -31,6 +46,10 @@
         <%= link_to 'Sign up', new_user_path %>
 
         <% end %>
+
+
+
+
 
     <%= yield %>
   </body>

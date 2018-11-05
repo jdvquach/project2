@@ -12,7 +12,9 @@ class SessionController < ApplicationController
       # this is the session key which we will use to check if the user
       # is logged in on all future pages
       session[:user_id] = user.id
-      redirect_to user_path( user.id )
+      #redirect_to user_path( user.id )
+      redirect_to ( root_path )
+      #redirect_to regions_path( user.id )
     else
       # Bad credentials, i.e. unsuccessful login
 
@@ -25,6 +27,6 @@ class SessionController < ApplicationController
 
   def destroy
     session[:user_id] = nil  # this logs out the user
-    redirect_to login_path
+    redirect_to regions_path
   end
 end
