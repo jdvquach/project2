@@ -1,5 +1,11 @@
 
 <h1>PLACES TO VISIT IN NSW</h1>
+
+<%= form_tag search_attractions_path do %>
+  <input name="query" placeholder="Search" type="text">
+  <button type="submit">Search</button>
+<% end %>
+
   <% @regions.each do |region| %>
     <%= link_to region.name, region_path(region.id) %>
     <br>
