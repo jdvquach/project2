@@ -10,7 +10,8 @@ class RegionsController < ApplicationController
   end
 
   def show
-    @regions = Region.find params[:id]
+    @region = Region.find params[:id]
+
   end
 
   def edit

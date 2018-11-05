@@ -12,10 +12,25 @@
 
   <body>
     <h1>Trippo</h1>
-    <h2>PLACES TO VISIT IN NSW</h2>
+        <% if @current_user.present? %>
+        <div>Welcome, <%= @current_user.name %></div>
+        <% end %>
+         <br>
+        <%= link_to 'Home', regions_path %>
+         |
+        <% if @current_user.present? %>
 
+        <%= link_to 'Create New Attraction', new_attraction_path %>
+         |
+        <%= link_to 'Logout', login_path, method: 'delete' %>
 
+        <% else %>
 
+        <%= link_to 'Login', login_path %>
+         |
+        <%= link_to 'Sign up', new_user_path %>
+
+        <% end %>
 
     <%= yield %>
   </body>

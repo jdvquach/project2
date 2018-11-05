@@ -1,5 +1,19 @@
-<h1>Show Region</h1>
+<h2>Show Region</h2>
+<br>
+  <div>
+    <%= cl_image_tag @region.image, class:"image",  alt: @region.name  %>
+  </div>
+<h2 ><%= @region.name %> Attractions</h2>
 
-<%= cl_image_tag @region.image, class:"image",  alt: @region.name  %>
 
-  <h2 ><%= @region.name %></h2>
+
+
+<h4>Attractions:</h4>
+
+  <% @region.attractions.each do |attraction| %>
+
+  <%= cl_image_tag attraction.image, size:"200x200"%>
+
+  <h5><%= link_to attraction.name, attraction_path(attraction.id), id: "attractionName"%></h5>
+
+  <% end %>

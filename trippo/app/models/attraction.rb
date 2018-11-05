@@ -3,4 +3,5 @@ class Attraction < ApplicationRecord
 
   validates :name, presence: true, uniqueness: true
   validates :region_id, presence: true
+  has_many :reviews
 end

@@ -44,7 +44,28 @@ This self-drive day tour takes you to five historical sites set in breathtaking 
 a10 = Attraction.create name:'Western Plains Zoo, Dubbo', address:'Obley Road Taronga Western Plains Zoo, Dubbo NSW 2830', lat: '-32.3', long:'148.6', description:"Experience the ultimate zoofari at Taronga Western Plains Zoo in Dubbo! Whether you walk, drive or ride around the Zoo's five kilometre circuit on hired bikes or carts, there's plenty to see and do.
 The Zoo is home to hundreds of rare and endangered animals including giraffes, rhinos, elephants and big cats. Daily keeper activities (included in zoo entry) and special tours deliver magical experiences you will never forget. Tickets are valid for two consecutive days, giving you ample time to experience all that is on offer.", image:"https://assets.atdw-online.com.au/images/54001d4f607bf3d98747f2e43a636534.jpeg?rect=382,0,2891,2168&w=800&h=600", region_id:10
 
+# ///////////////////////////////////////////////////////////////////////////////
+
+a11 = Attraction.create name:'Katoomba area', address: 'Blue Mountains National Park
+Wentworth Falls NSW 2782', lat:'-33.721494', long:'150.312101', description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.", image: 'https://www.visitnsw.com/sites/visitnsw/files/styles/gallery_full_width/public/2017-05/Scenic_World%2C_Katoomba.jpeg?itok=RGOFdmuZ', region_id: 1
+
+
+a12 = Attraction.create name:'Scentic World Blue Mountains', address: 'Corner of Violet Street and Cliff Drive Katoomba NSW 2780', lat:'-33.7', long:'150.3', description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.", image: 'https://assets.atdw-online.com.au/images/b7824d71bab8ab94690f306098db251f.jpeg?rect=156,0,2496,1872&w=800&h=600', region_id: 1
+
+
+a13 = Attraction.create name:'Echo Point ', address: 'Echo Point Road Katoomba NSW 2780', lat:'-33.729625', long:'150.311750', description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.", image: 'https://assets.atdw-online.com.au/images/998ad8304cd1af6dd325198199d71c2d.jpeg?rect=512,0,2048,1536&w=800&h=600', region_id: 1
+
+
+a14 = Attraction.create name:'Wentworth Falls ', address: 'Wentworth Falls picnic area Wentworth Falls NSW', lat:'-33.724967', long:'150.369552', description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.", image: 'https://www.visitnsw.com/sites/visitnsw/files/styles/gallery_full_width/public/2017-08/117641-2.jpg?itok=gaMtWKtk', region_id: 1
+
+
+a15 = Attraction.create name:'Blue Mountains Music Festival', address: 'Lurline Street
+Katoomba NSW 2780', lat:'-33.707790', long:'150.320316', description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.", image: 'https://assets.atdw-online.com.au/images/fb44239dbe8ac985022c6790a8c871dc.jpeg?rect=343,0,2052,1539&w=800&h=600', region_id: 1
+
+
 puts "Created #{Attraction.all.length} attractions."
+
+
 
 
 
@@ -57,8 +78,10 @@ rv3 = Review.create comment:"We had a perfect day for our climb with Jack guidin
 rv4 = Review.create comment:"Really enjoyed it. Informative interesting talks. Animal interaction and plenty to see. You can have your picture taken with a variety of animals, including koalas for a reasonable fee. Definitely worth a visit if passing.", user_id:3, attraction_id:2
 rv5= Review.create comment:"I have visited the Sculptures and Living Desert Sanctuary twice now and both times I have enjoyed it immensely. The sculptures should be viewed at different times of the day because they change with the light. Definitely worth the drive out of town.", user_id:3, attraction_id:7
 
+puts "Created #{Review.all.length} reviews."
 
-r1.attractions << a1
+
+r1.attractions << a1 << a11 << a12 << a13 << a14 << a15
 r2.attractions << a2
 r3.attractions << a3
 r4.attractions << a4
@@ -68,3 +91,15 @@ r7.attractions << a7
 r8.attractions << a8
 r9.attractions << a9
 r10.attractions << a10
+
+
+
+a5.reviews << rv1 << rv3
+a10.reviews << rv2
+a2.reviews << rv4
+a7.reviews << rv5
+
+
+u1.reviews << rv1 << rv2
+u2.reviews << rv3 << rv4
+u3.reviews << rv5
