@@ -1,7 +1,6 @@
 <h2>Attraction: <%=@attraction.name %></h2>
 
-Back to <%= link_to @attraction.region.name, region_path(@attraction.region.id) %> region.
-
+<strong><%= link_to  'Back', region_path(@attraction.region.id) %></strong>
 
 <div>
 
@@ -39,3 +38,32 @@ function initMap() {
  <script async defer
  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfdeYzd23jyR3fKx0oRtdlqCDK-NEzwcI&callback=initMap">
  </script>
+
+<div>
+  <% if @current_user.present? %>
+  <%= link_to 'Add a review', new_review_path %>
+  <%= form_tag reviews_path do %>
+
+     <%= text_area_tag :comment  %>
+     <%= hidden_field_tag :attraction_id, "#{@attraction.id}" %>
+
+
+     <%= submit_tag 'Submit'%>
+
+     <% else %>
+     <%= link_to 'login', login_path %>
+     <% end %>
+
+
+  <% end %>
+</div>
+
+<div>
+    <% @attraction.reviews.reverse.each do |review| %>
+      <%= review.user.name %> | <%= time_ago_in_words(review.created_at)%> ago
+      <p><%= review.comment %></p>
+      <p><%= link_to 'Delete', review_path(review.id), method: 'delete' %></p>
+      <hr>
+    <% end %>
+
+</div>

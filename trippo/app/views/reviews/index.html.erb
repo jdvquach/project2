@@ -1,7 +1,7 @@
 <h2> Reviews: </h2>
 
 
-  <% @reviews.each do |review| %>
+  <%  @reviews.each do |review| %>
   <%= link_to review.comment, review_path(review.id)%>
   <br>
   <% end %>
