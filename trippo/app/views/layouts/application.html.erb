@@ -11,6 +11,16 @@
   </head>
 
   <body>
+
+
+<!-- Just an image -->
+<nav class="navbar navbar-dark primary-color special-img">
+  <a class="navbar-brand" href="#">
+    <img class="test" src="https://picsum.photos/200/300/?random" height="60" width="60" alt="User">
+  </a>
+  <%= @current_user.name %>
+</nav>
+
     <h1>Trippo</h1>
         <% if @current_user.present? %>
         <div>Welcome, <%= @current_user.name %></div>
