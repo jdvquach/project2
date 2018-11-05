@@ -1,4 +1,7 @@
 class ReviewsController < ApplicationController
+
+  before_action :check_if_logged_in, except: [:index, :show]
+
   def new
     @review = Review.new
   end
@@ -7,16 +10,15 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.create({:comment => params[:comment]})
 
-      if @review.persisted?
-        @review.user_id = @current_user.id
-        @review.attraction_id = params[:attraction_id]
-        @review.save
-        # raise "hell"
-        redirect_to( attraction_path(@review.attraction) )
-      else
-      render :new
-      end
-
+    if @review.persisted?
+      @review.user_id = @current_user.id
+      @review.attraction_id = params[:attraction_id]
+      @review.save
+      # raise "hell"
+      redirect_to( attraction_path(@review.attraction) )
+    else
+    render :new
+    end
   end
 
   def index
@@ -39,7 +41,7 @@ class ReviewsController < ApplicationController
   def destroy
     @review = Review.find params[:id]
     @review.destroy
-    redirect_to (reviews_path)
+    redirect_to (attraction_path(@review.attraction))
   end
 
 
