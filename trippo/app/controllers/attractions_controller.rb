@@ -28,6 +28,7 @@ class AttractionsController < ApplicationController
 
     @venues = Attraction.near([lat, lng],20, :units=>:km)
 
+
   end
 
   def edit
