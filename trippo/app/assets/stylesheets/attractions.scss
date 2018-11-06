@@ -5,3 +5,13 @@
         height: 400px;  /* The height is 400 pixels */
         width: 100%;  /* The width is the width of the web page */
        }
+
+.mapImageContainer{
+  max-height: 250px;
+  max-width: 250px
+}
+
+.mapImageContainer img{
+  max-height: 100%;
+  width: 100%;
+}

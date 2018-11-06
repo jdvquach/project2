@@ -19,13 +19,14 @@ class AttractionsController < ApplicationController
 
   def show
     @attraction = Attraction.find(params[:id])
-    lat=(@attraction.lat).to_f
-    lng=(@attraction.long).to_f
+    lat=(@attraction.latitude)
+    lng=(@attraction.longitude)
     url= "http://api.openweathermap.org/data/2.5/weather?lat=#{lat}&lon=#{lng}&units=metric&APPID=e96ba79e3a38e2e8a4b5ab62c5394a07"
 
-    puts "URL: #{url}"
-
     @weather = HTTParty.get( url )
+
+
+    @venues = Attraction.near([lat, lng],20, :units=>:km)
 
   end
 
@@ -48,12 +49,16 @@ class AttractionsController < ApplicationController
   def search
     @query = "#{params[:query]}"
     @attractions = Attraction.where('name iLIKE :search OR description iLIKE :search OR tags iLIKE :search ', search: "%#{@query}%")
-  
+
+  end
+
+  def address
+    [address]
   end
 
   private
   def attraction_params
-    params.require(:attraction).permit(:name, :address, :lat, :long, :description, :image, :region_id)  #permission to enter and update these fields
+    params.require(:attraction).permit(:name, :address, :latitude, :longitude, :description, :image, :region_id)  #permission to enter and update these fields
   end
 
 end
