@@ -13,7 +13,7 @@
   </head>
 
   <body>
-<<<<<<< HEAD
+
     <h1 class="logo">Trippo</h1>
 
     <% if @current_user.present? %>
@@ -28,7 +28,6 @@
            <%= link_to 'Edit Account', user_path(@current_user) %>
            |
           <%= link_to 'Logout', login_path, method: 'delete' %>
-=======
 
 <nav class="navbar navbar-dark primary-color special-img">
 
@@ -62,9 +61,6 @@
         <%= link_to 'My Account', edit_user_path(@current_user.id) %>
          |
         <%= link_to 'Logout', login_path, method: 'delete' %>
->>>>>>> cca95e65742a34396d9d758dbf751cb3047a7729
-
-
           <% else %>
 
           <%= link_to 'Login', login_path %>
@@ -103,8 +99,6 @@
         <span class="sr-only">Next</span>
       </a>
     </div>
-
-
 
     <%= yield %>
 
