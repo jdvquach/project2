@@ -6,6 +6,7 @@ class SessionController < ApplicationController
     # see if the email address entered actually corresponds to a user in the table
     user = User.find_by email: params[:email]
 
+
     if user.present? && user.authenticate( params[:password] )
       # Successful login:
       # Get Rails to create a new session key to store the user's ID;
