@@ -13,8 +13,28 @@
   </head>
 
   <body>
-<<<<<<< HEAD
     <h1 class="logo">Trippo</h1>
+
+
+    <nav class="navbar navbar-dark primary-color special-img">
+
+    <% if @current_user.present? %>
+
+    <%= @current_user.name %> <em>
+    <% end %>
+    <a class="navbar-brand" href="#">
+      <% if @current_user.present? %>
+        <%= cl_image_tag @current_user.image, class:"avartar" %>
+
+      <% end %>
+    </a>
+
+    </nav>
+
+
+
+
+
 
     <% if @current_user.present? %>
           <div>Welcome, <%= @current_user.name %></div>
@@ -25,44 +45,9 @@
 
           <%= link_to 'Create New Attraction', new_attraction_path %>
            |
-           <%= link_to 'Edit Account', user_path(@current_user) %>
+           <%= link_to 'My Account', edit_user_path(@current_user.id) %>
            |
           <%= link_to 'Logout', login_path, method: 'delete' %>
-=======
-
-<nav class="navbar navbar-dark primary-color special-img">
-
-  <% if @current_user.present? %>
-
-  <%= @current_user.name %> <em>
-  <% end %>
-  <a class="navbar-brand" href="#">
-    <% if @current_user.present? %>
-      <%= cl_image_tag @current_user.image, class:"avartar" %>
-    <% else %>
-      <img class="avartar" src="https://picsum.photos/200/300/?random" alt="User">
-    <% end %>
-  </a>
-
-</nav>
-
-
-
-    <h1>Trippo</h1>
-        <% if @current_user.present? %>
-        <div>Welcome, <%= @current_user.name %></div>
-        <% end %>
-         <br>
-        <%= link_to 'Home', regions_path %>
-         |
-        <% if @current_user.present? %>
-
-        <%= link_to 'Create New Attraction', new_attraction_path %>
-         |
-        <%= link_to 'My Account', edit_user_path(@current_user.id) %>
-         |
-        <%= link_to 'Logout', login_path, method: 'delete' %>
->>>>>>> cca95e65742a34396d9d758dbf751cb3047a7729
 
 
           <% else %>
@@ -110,3 +95,6 @@
 
   </body>
 </html>
+
+
+<!-- //////////////////////////////////// -->
