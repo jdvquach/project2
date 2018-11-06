@@ -1,6 +1,14 @@
 <h2>Search results for "<%= @query %>"</h2>
+
+
+<% if @attractions.length===0 %>
+  Sorry, there are no results for "<%= @query %>"
+
+<% else %>
 <ul>
-<%= @attractions.each do |attraction| %>
+  <%= @attractions.each do |attraction| %>
   <li><%=link_to  attraction.name , attraction_path(attraction.id)%></li>
-<% end %>
+  <%= link_to image_tag(attraction.image), attraction_path(attraction.id) %>
+  <% end %>
 </ul>
+<% end %>

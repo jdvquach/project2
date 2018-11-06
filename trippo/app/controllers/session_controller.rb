@@ -6,13 +6,16 @@ class SessionController < ApplicationController
     # see if the email address entered actually corresponds to a user in the table
     user = User.find_by email: params[:email]
 
+
     if user.present? && user.authenticate( params[:password] )
       # Successful login:
       # Get Rails to create a new session key to store the user's ID;
       # this is the session key which we will use to check if the user
       # is logged in on all future pages
       session[:user_id] = user.id
-      redirect_to regions_path( user.id )
+      #redirect_to user_path( user.id )
+      redirect_to ( root_path )
+      #redirect_to regions_path( user.id )
     else
       # Bad credentials, i.e. unsuccessful login
 
