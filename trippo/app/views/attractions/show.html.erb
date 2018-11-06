@@ -60,7 +60,11 @@ function initMap() {
     <% @attraction.reviews.reverse.each do |review| %>
       <h6><strong><%= review.user.name %> | <%= time_ago_in_words(review.created_at)%> ago</strong></h6>
       <p><%= review.comment %></p>
+
+      <% if review.user == @current_user %>
       <p><%= link_to 'Delete', review_path(review.id), method: 'delete' %></p>
+      <% end %>
+
       <hr>
     <% end %>
 
