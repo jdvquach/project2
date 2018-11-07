@@ -1,87 +1,6 @@
 
 
-<<<<<<< HEAD:trippo/app/views/layouts/application.html.erb
-  </head>
 
-  <body>
-
-
-    <h1 class="logo">Trippo</h1>
-
-<!-- ///////////Nav Items///////////// -->
-
-    <nav class="navbar navbar-dark primary-color special-img">
-         <% if @current_user.present? %>
-         <div>
-           Welcome, <%= @current_user.name %>
-           <%= cl_image_tag @current_user.image, class:"avartar" %>
-         </div>
-         <% end %>
-    </nav>
-
-    <%= link_to 'Home', regions_path %>
-          |
-         <% if @current_user.present? %>
-
-         <%= link_to 'Create New Attraction', new_attraction_path %>
-          |
-          <%= link_to 'My Account', edit_user_path(@current_user.id) %>
-          |
-         <%= link_to 'Logout', login_path, method: 'delete' %>
-
-
-         <% else %>
-          <div >
-         <%= link_to 'Login', login_path , "data-toggle" => "modal", "data-target" => "#exampleModal", "data-whatever" => "@getbootstrap" %>
-
-
-
-         </div>
-          |
-         <%= link_to 'Sign up', new_user_path  %>
-
-         <% end %>
-
-    <%= yield %>
-
-  </body>
-</html>
-
-
-<!-- ///////////LOGIN Form Popup///////////// -->
-
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Sign in to continue</h5>
-      </div>
-      <div class="modal-body">
-        <%= form_tag login_path  do %>
-          <span>
-          <%= label_tag :email %>
-          <%= email_field_tag :email, nil, class:"form-control", id:"recipient-name", placeholder:"Enter email" %>
-        </span>
-          <br>
-          <span>
-            <%= label_tag :password%>
-            <%= password_field_tag :password, nil, type:"text", class:"form-control", id:"recipient-name"%>
-          </span>
-          <br>
-
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <%= submit_tag 'Login', class:"btn btn-success" %>
-            <% end %>
-            </div>
-
-      </div>
-
-      </div>
-
-    </div>
-</div>
-=======
 <!--- carousel part ---------->
   <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
       <div class="carousel-inner">
@@ -125,4 +44,3 @@
     <%= cl_image_tag region.image, class:"hgsbj"%>
     <br>
   <% end %>
->>>>>>> 7e593401d33065a62a584cae12fccc92f9485e81:app/views/regions/index.html.erb
