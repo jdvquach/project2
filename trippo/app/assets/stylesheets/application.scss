@@ -25,3 +25,18 @@ padding:20px;
 body{
   background-color:lightblue;
 }
+
+.login{
+    display: flex;
+    flex-flow: column;
+    text-align:center;
+    color:#009999;
+}
+
+
+.modal-content{
+
+  display: block;
+
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+}
