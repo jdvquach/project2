@@ -1,8 +1,6 @@
 
-
-
 <!--- carousel part ---------->
-  <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+<div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel" class="carouselZ-index ">
       <div class="carousel-inner">
         <div class="carousel-item active">
           <img class="d-block w-100" src="https://www.visitnsw.com/sites/visitnsw/files/styles/header_slider/public/2017-05/Header%20Clarence%20Valley%20Gorge%20-%20Image%20My%20Clarence%20Valley.jpg?itok=26-mUZE" alt="First slide">
@@ -32,15 +30,35 @@
         <span class="sr-only">Next</span>
       </a>
     </div>
+
+<!--- Search part ---------->
+
+<div class="serachContainer">
+    <h1 class="text" class="searchItem">PLACES TO VISIT IN NSW</h1>
+  <form class="form-inline" class="searchform">
+      <%= form_tag search_attractions_path do %>
+      <div class="searchItem">
+      <input type="text" class="form-control"  placeholder="Search">
+    <!-- </div> -->
+    <button type="submit" class="btn btn-info">Search</button>
+  </div>
+
+    <% end %>
+  </form>
+
+</div>
+
 <!--- region part ---------->
-<h1>PLACES TO VISIT IN NSW</h1>
-<%= form_tag search_attractions_path do %>
-  <input name="query" placeholder="Search" type="text">
-  <button type="submit">Search</button>
-<% end %>
+
+
+
+<div class="regionContainer">
   <% @regions.each do |region| %>
+    <div class="image">
+    <%= cl_image_tag region.image, class:"regionImage"%>
+    <div class="imageNameBox">
     <%= link_to region.name, region_path(region.id) %>
-    <br>
-    <%= cl_image_tag region.image, class:"hgsbj"%>
-    <br>
+    </div>
+    </div>
   <% end %>
+</div>

@@ -1,3 +1,80 @@
 // Place all the styles related to the regions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+
+
+//////////////// search part ///////////////////////////////////
+
+.text{
+  font-size:15px;
+  padding:20px;
+  text-align:center;
+  align-self: center;
+}
+
+.serachContainer {
+  display: flex;
+  // margin: 0;
+  padding: 0;
+  background-color: #D6D4CE;
+  width: 100vw!important;
+  height: 10vh;
+  align-items: center;
+  justify-items:center;
+  justify-content:center;
+
+}
+
+.searchItem {
+  display: block ;
+  align-self: center;
+  margin: 0!important;
+  align-content: flex-end;
+}
+
+
+
+//////////////// carousel part ///////////////////////////////////
+
+.regionContainer {
+  display: grid;
+  margin-top: 5vh;
+  // border: 1px black solid;
+  width: 70vw;
+  height: 140vh;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows:  repeat(3, 1fr);
+  grid-column-gap: 2px;
+  grid-row-gap: 2px;
+  position: relative;
+}
+
+.imageNameBox{
+  background: none repeat scroll 0 0 #17a2b8;
+  // opacity: 0.5;
+  top:0;
+  left:0;
+  margin-bottom:4vh;
+  padding: 10px;
+}
+.imageNameBox a{
+  color:white;
+  text-decoration: none;
+}
+.imageNameBox a:hover{
+  color:#66ff33;
+  text-decoration: none;
+
+}
+.regionImage{
+  width: 300px;
+  height: 200px;
+  // position: relative;
+  z-index: -1;
+
+}
+
+/////////////////////////////////////////////////////
