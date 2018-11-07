@@ -1,24 +1,37 @@
 <script>
   const attraction_id = <%= @attraction.id %>;
 </script>
+<div class='container'>
+   <div class="row">
+    <div class="col-md-12">
 
-<h2>Attraction: <%=@attraction.name %></h2>
+  <h2>Attraction: <%=@attraction.name %></h2>
 
-<strong><%= link_to  'Back', region_path(@attraction.region.id) %></strong>
+  <hr>
 
-<div>
+  <strong><%= link_to  'Back', region_path(@attraction.region.id) %></strong>
+
+  <div>
 
   <h4>Address: <%= @attraction.address %></h4>
-  <h4>Current tempertature: <%= @weather['main']['temp'] %></h4>
+  <h4>Current tempertature: <%= @weather['main']['temp'] %> &#176 C </h4>
   <h4>Weather station: <%=@weather['name']  %></h4>
+  <hr>
+  <%= image_tag @attraction.image, class:"attractionImage" %>
+  <br>
+  <br>
+  <br>
   <h3><%= @attraction.description %></h3>
-  <%= image_tag @attraction.image %>
-</div>
+  </div>
+
+<br>
+<br>
+<br>
 
 
 <!--The div element for the map -->
 
-<div id="map"></div>
+  <div id="map"></div>
 
 
 
@@ -73,12 +86,7 @@ var listener = google.maps.event.addListener(map, "idle", function() {  //single
  <script async defer
  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfdeYzd23jyR3fKx0oRtdlqCDK-NEzwcI&callback=initMap">
 
-
-
-
-
  </script>
-
 
 <div>
   <% if @current_user.present? %>
@@ -91,6 +99,7 @@ var listener = google.maps.event.addListener(map, "idle", function() {  //single
       <hr>
 
   <% else %>
+
       <p><%= link_to 'Login', login_path%> to leave a comment</p>
   <% end %>
 
@@ -107,6 +116,8 @@ var listener = google.maps.event.addListener(map, "idle", function() {  //single
 
       <hr>
     <% end %>
+</div>
 
-
+    </div>
+  </div>
 </div>
