@@ -23,20 +23,20 @@ $('#reviewSubmit').on('click',() =>{
 }); // review submit handler
 
 
-  const displayReviews = response => {
-
-    console.log( response );
-
-    response.forEach( review => {
-
-      // console.log(dog.name);
-
-      $('<li>').html(`${review.comment}`)
-      //.append( $('<img>', {src: dog.image}))
-      .appendTo('#dogList');
-    });
-
-  };
+  // const displayReviews = response => {
+  //
+  //   console.log( response );
+  //
+  //   response.forEach( review => {
+  //
+  //     // console.log(dog.name);
+  //
+  //     $('<li>').html(`${review.comment}`)
+  //     //.append( $('<img>', {src: dog.image}))
+  //     .appendTo('#dogList');
+  //   });
+  //
+  // };
 
   // $.getJSON(url)
   // .done( displayReviews )

@@ -26,14 +26,17 @@
 //   background-color:lightblue;
 // }
 @import 'bootstrap';
+
+
 .logo{
-  font-family: 'Montserrat Subrayada', sans-serif;
+font-family: 'Montserrat Subrayada', sans-serif;
 color: white;
+font-size: 30pt;
 padding:20px;
 }
-body{
-  background-color:lightblue;
-}
+
+////////////////Login Form//////////////////////////////
+
 .login{
     display: flex;
     flex-flow: column;
@@ -44,3 +47,47 @@ body{
   display: block;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
 }
+
+////////////////Home page NavBar//////////////////////////////
+
+.navContainer {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  background-color: #17a2b8;
+  // border: 1px solid black;
+  width: 100vw!important;
+  height: 12vh;
+  justify-content: space-between;
+}
+
+.navContainer2{
+  width: 100vw!important;
+  height: 1vh;
+  background-color: white;
+}
+
+.item1 {
+  align-self: center;
+  padding-right: 2vw;
+  margin: 0!important;
+}
+
+.item1 a{
+  color:white;
+  text-decoration: none;
+}
+.item1 a:hover{
+  color:#66ff33;
+  text-decoration: none;
+
+}
+.welcom{
+    color:white;
+}
+
+#logo {
+align-self: center;
+}
+
+//////////////////////////////////////////////////////
