@@ -15,7 +15,8 @@ class ReviewsController < ApplicationController
       @review.attraction_id = params[:attraction_id]
       @review.save
       # raise "hell"
-      redirect_to( attraction_path(@review.attraction) )
+      # redirect_to( attraction_path(@review.attraction) )
+      render json: @review, include: {user: {only: 'name'} }
     else
     render :new
     end
