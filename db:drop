@@ -1,0 +1,236 @@
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (174.9ms)[0m  [1m[35mDROP DATABASE IF EXISTS "trippo_development"[0m
+  ↳ bin/rails:4
+Dropped database 'trippo_development'
+  [1m[35m (224.9ms)[0m  [1m[35mDROP DATABASE IF EXISTS "trippo_test"[0m
+  ↳ bin/rails:4
+Dropped database 'trippo_test'
+  [1m[35m (465.1ms)[0m  [1m[35mCREATE DATABASE "trippo_development" ENCODING = 'unicode'[0m
+  ↳ bin/rails:4
+Created database 'trippo_development'
+  [1m[35m (464.5ms)[0m  [1m[35mCREATE DATABASE "trippo_test" ENCODING = 'unicode'[0m
+  ↳ bin/rails:4
+Created database 'trippo_test'
+-- enable_extension("plpgsql")
+  [1m[35mSQL (3.1ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  ↳ db/schema.rb:16
+   -> 0.0604s
+-- create_table("attractions", {:force=>:cascade})
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS "attractions" CASCADE[0m
+  ↳ db/schema.rb:18
+  [1m[35m (48.6ms)[0m  [1m[35mCREATE TABLE "attractions" ("id" bigserial primary key, "name" text, "address" text, "lat" text, "long" text, "description" text, "image" text, "region_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "tags" text)[0m
+  ↳ db/schema.rb:18
+   -> 0.0534s
+-- create_table("regions", {:force=>:cascade})
+  [1m[35m (0.8ms)[0m  [1m[35mDROP TABLE IF EXISTS "regions" CASCADE[0m
+  ↳ db/schema.rb:31
+  [1m[35m (10.7ms)[0m  [1m[35mCREATE TABLE "regions" ("id" bigserial primary key, "name" text, "image" text, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:31
+   -> 0.0140s
+-- create_table("reviews", {:force=>:cascade})
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE IF EXISTS "reviews" CASCADE[0m
+  ↳ db/schema.rb:38
+  [1m[35m (9.4ms)[0m  [1m[35mCREATE TABLE "reviews" ("id" bigserial primary key, "comment" text, "user_id" integer, "attraction_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:38
+   -> 0.0118s
+-- create_table("users", {:force=>:cascade})
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  ↳ db/schema.rb:46
+  [1m[35m (9.7ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "name" text, "email" text, "admin" boolean, "password_digest" text, "image" text, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:46
+   -> 0.0125s
+  [1m[35m (7.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ db/schema.rb:13
+  [1m[35m (3.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20181106003515)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (1.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20181102040805),
+(20181102041245),
+(20181102040924),
+(20181106003458),
+(20181105185045),
+(20181102042543);
+
+[0m
+  ↳ db/schema.rb:13
+  [1m[35m (6.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ db/schema.rb:13
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Create (1.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2018-11-06 00:54:39.492894"], ["updated_at", "2018-11-06 00:54:39.492894"]]
+  ↳ db/schema.rb:13
+  [1m[35m (5.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:4
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:4
+-- enable_extension("plpgsql")
+  [1m[35mSQL (0.7ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  ↳ db/schema.rb:16
+   -> 0.0654s
+-- create_table("attractions", {:force=>:cascade})
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "attractions" CASCADE[0m
+  ↳ db/schema.rb:18
+  [1m[35m (11.9ms)[0m  [1m[35mCREATE TABLE "attractions" ("id" bigserial primary key, "name" text, "address" text, "lat" text, "long" text, "description" text, "image" text, "region_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "tags" text)[0m
+  ↳ db/schema.rb:18
+   -> 0.0137s
+-- create_table("regions", {:force=>:cascade})
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE IF EXISTS "regions" CASCADE[0m
+  ↳ db/schema.rb:31
+  [1m[35m (13.3ms)[0m  [1m[35mCREATE TABLE "regions" ("id" bigserial primary key, "name" text, "image" text, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:31
+   -> 0.0152s
+-- create_table("reviews", {:force=>:cascade})
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS "reviews" CASCADE[0m
+  ↳ db/schema.rb:38
+  [1m[35m (11.3ms)[0m  [1m[35mCREATE TABLE "reviews" ("id" bigserial primary key, "comment" text, "user_id" integer, "attraction_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:38
+   -> 0.0136s
+-- create_table("users", {:force=>:cascade})
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  ↳ db/schema.rb:46
+  [1m[35m (9.3ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "name" text, "email" text, "admin" boolean, "password_digest" text, "image" text, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:46
+   -> 0.0112s
+  [1m[35m (7.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ db/schema.rb:13
+  [1m[35m (1.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20181106003515)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (1.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20181102040805),
+(20181102041245),
+(20181102040924),
+(20181106003458),
+(20181105185045),
+(20181102042543);
+
+[0m
+  ↳ db/schema.rb:13
+  [1m[35m (8.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (1.9ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ db/schema.rb:13
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Create (0.7ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2018-11-06 00:54:39.669833"], ["updated_at", "2018-11-06 00:54:39.669833"]]
+  ↳ db/schema.rb:13
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::InternalMetadata Update (6.4ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "test"], ["updated_at", "2018-11-06 00:54:39.680044"], ["key", "environment"]]
+  ↳ bin/rails:4
+  [1m[35m (10.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:4
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ db/seeds.rb:1
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:3
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jubei@ga.co"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:3
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "admin", "password_digest", "image", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Jubei Kibagami"], ["email", "jubei@ga.co"], ["admin", true], ["password_digest", "$2a$10$N.RJorEzFkC.Mag9ztwQ2.1Nr76BG2hPvkpXIS1iUmkexAwK4KYl6"], ["image", "https://pbs.twimg.com/profile_images/1566050159/Jubei_eating_a_rice_ball_400x400.jpg"], ["created_at", "2018-11-06 00:54:39.834003"], ["updated_at", "2018-11-06 00:54:39.834003"]]
+  ↳ db/seeds.rb:3
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:4
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ultimate@ga.co"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:4
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "admin", "password_digest", "image", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "The Ultimate Warrior"], ["email", "ultimate@ga.co"], ["admin", false], ["password_digest", "$2a$10$4/YJ/ah9Youp9zpDqoDPWOr.FxodlkWRfeiJH1wPsmZCOmejdTOWq"], ["image", "https://pbs.twimg.com/profile_images/953353542663917568/xt3zYzOo_400x400.jpg"], ["created_at", "2018-11-06 00:54:39.900904"], ["updated_at", "2018-11-06 00:54:39.900904"]]
+  ↳ db/seeds.rb:4
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:4
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:5
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "neil@ga.co"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:5
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "admin", "password_digest", "image", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Neil Young"], ["email", "neil@ga.co"], ["admin", true], ["password_digest", "$2a$10$2aCeyng/mMcGgQTebJ2tBOAj2kzl6HIm.COJZXRf82XROc75ZRrkm"], ["image", "https://i2.wp.com/www.backseatmafia.com/wp-content/uploads/2015/03/neil-young-400x400.jpg?fit=400%2C400"], ["created_at", "2018-11-06 00:54:39.965046"], ["updated_at", "2018-11-06 00:54:39.965046"]]
+  ↳ db/seeds.rb:5
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:5
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ db/seeds.rb:7
+Created 3 users.
+  [1m[36mRegion Load (0.5ms)[0m  [1m[34mSELECT "regions".* FROM "regions"[0m
+  ↳ db/seeds.rb:10
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:12
+  [1m[36mRegion Create (0.6ms)[0m  [1m[32mINSERT INTO "regions" ("name", "image", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Blue Mountains"], ["image", "https://www.bluemts.com.au/images/sendbinarynews.asp?path=ty4tl7p7.jpg&maxwidth=645"], ["created_at", "2018-11-06 00:54:39.982081"], ["updated_at", "2018-11-06 00:54:39.982081"]]
+  ↳ db/seeds.rb:12
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:12
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:13
+  [1m[36mRegion Create (0.3ms)[0m  [1m[32mINSERT INTO "regions" ("name", "image", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Central Coast"], ["image", "https://prod-us-west.imgix.net/DXWFOO9MBW-XBN-75OHC2/5a93493397679.jpg?w=600&fit=clip&q=80&orient=0&s=9e8830213c557f98572e2e824a9efb6a"], ["created_at", "2018-11-06 00:54:39.986509"], ["updated_at", "2018-11-06 00:54:39.986509"]]
+  ↳ db/seeds.rb:13
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:13
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:14
+  [1m[36mRegion Create (0.3ms)[0m  [1m[32mINSERT INTO "regions" ("name", "image", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Country NSW"], ["image", "https://www.websternolan.com.au/sites/default/files/2D_10.jpg"], ["created_at", "2018-11-06 00:54:39.991055"], ["updated_at", "2018-11-06 00:54:39.991055"]]
+  ↳ db/seeds.rb:14
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:14
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:15
+  [1m[36mRegion Create (0.4ms)[0m  [1m[32mINSERT INTO "regions" ("name", "image", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Hunter Valley"], ["image", "http://www.huntervalleyvisitorcentre.com.au/media/bizlist/images/Hunter-Valley-YHA-Bike-Ride.jpg.900x800_q65.jpg"], ["created_at", "2018-11-06 00:54:39.995739"], ["updated_at", "2018-11-06 00:54:39.995739"]]
+  ↳ db/seeds.rb:15
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:16
+  [1m[36mRegion Create (0.4ms)[0m  [1m[32mINSERT INTO "regions" ("name", "image", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Lord Howe Island"], ["image", "https://sporteluxe-wp.s3-ap-southeast-2.amazonaws.com/wp-content/uploads/2013/12/Lorde-Howe-Island1.jpg"], ["created_at", "2018-11-06 00:54:40.000181"], ["updated_at", "2018-11-06 00:54:40.000181"]]
+  ↳ db/seeds.rb:16
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:16
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:17
+  [1m[36mRegion Create (0.5ms)[0m  [1m[32mINSERT INTO "regions" ("name", "image", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "North Coast"], ["image", "http://www.visitnorthcoast.com.au/wp-content/uploads/2015/11/clarence.jpg"], ["created_at", "2018-11-06 00:54:40.005159"], ["updated_at", "2018-11-06 00:54:40.005159"]]
+  ↳ db/seeds.rb:17
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:17
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:18
+  [1m[36mRegion Create (0.4ms)[0m  [1m[32mINSERT INTO "regions" ("name", "image", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Outback NSW"], ["image", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkcUHoRJrJUcVUNDQ2_a9wnZ3ZASHjCEImwnBec8sdw3nQxhUG"], ["created_at", "2018-11-06 00:54:40.010103"], ["updated_at", "2018-11-06 00:54:40.010103"]]
+  ↳ db/seeds.rb:18
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:18
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:19
+  [1m[36mRegion Create (0.4ms)[0m  [1m[32mINSERT INTO "regions" ("name", "image", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Snowy Moutains"], ["image", "https://www.rastanley.com.au/img/products/large/68285.jpg?n=58"], ["created_at", "2018-11-06 00:54:40.014897"], ["updated_at", "2018-11-06 00:54:40.014897"]]
+  ↳ db/seeds.rb:19
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:19
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:20
+  [1m[36mRegion Create (0.3ms)[0m  [1m[32mINSERT INTO "regions" ("name", "image", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "South Coast"], ["image", "http://cdn.shopify.com/s/files/1/0818/9531/products/WarrenKeelan_Shellharbour_grande.jpeg?v=1446031888"], ["created_at", "2018-11-06 00:54:40.018941"], ["updated_at", "2018-11-06 00:54:40.018941"]]
+  ↳ db/seeds.rb:20
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:20
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:21
+  [1m[36mRegion Create (0.4ms)[0m  [1m[32mINSERT INTO "regions" ("name", "image", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Family Fun"], ["image", "https://2dbdd5116ffa30a49aa8-c03f075f8191fb4e60e74b907071aee8.ssl.cf1.rackcdn.com/12742145_1469155272.4348.jpg"], ["created_at", "2018-11-06 00:54:40.024022"], ["updated_at", "2018-11-06 00:54:40.024022"]]
+  ↳ db/seeds.rb:21
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:21
+  [1m[36mRegion Load (0.3ms)[0m  [1m[34mSELECT "regions".* FROM "regions"[0m
+  ↳ db/seeds.rb:23
+Created 10 regions.
+  [1m[36mAttraction Load (0.6ms)[0m  [1m[34mSELECT "attractions".* FROM "attractions"[0m
+  ↳ db/seeds.rb:28

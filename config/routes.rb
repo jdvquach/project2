@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root "regions#index"
+  root to: "regions#index"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   resources :regions , only: [ :index, :show ]

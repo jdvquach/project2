@@ -1,0 +1,18 @@
+.createAccount{
+    display: flex;
+    flex-flow: column;
+    text-align:center;
+    color:#009999;
+}
+.form-group{
+  max-width: 500px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+   justify-content: center;
+  width: 450px;
+  height: 450px;
+  background: #ffffff;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+}

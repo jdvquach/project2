@@ -1,0 +1,135 @@
+<h2>Attraction: <%=@attraction.name %></h2>
+
+<strong><%= link_to  'Back', region_path(@attraction.region.id) %></strong>
+
+<div>
+
+  <h4>Address: <%= @attraction.address %></h4>
+  <h4>Current tempertature: <%= @weather['main']['temp'] %></h4>
+  <h4>Weather station: <%=@weather['name']  %></h4>
+  <h3><%= @attraction.description %></h3>
+  <%= image_tag @attraction.image %>
+</div>
+
+
+<!--The div element for the map -->
+
+<div id="map"></div>
+
+
+
+<script>
+
+// Initialize and add the map
+function initMap() {
+  // The location of marker
+  var marker = {lat: <%= @attraction.lat %>, lng: <%= @attraction.long %>};
+  // The map, centered at marker
+  var map = new google.maps.Map(
+      document.getElementById('map'), {zoom: 9, center: marker});
+  // The marker, positioned at marker
+  var marker = new google.maps.Marker({position: marker, map: map});
+}
+    </script>
+ <!--Load the API from the specified URL
+ * The async attribute allows the browser to render the page while the API loads
+ * The key parameter will contain your own API key (which is not needed for this tutorial)
+ * The callback parameter executes the initMap() function
+ -->
+ <script async defer
+ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfdeYzd23jyR3fKx0oRtdlqCDK-NEzwcI&callback=initMap">
+ </script>
+ <!-- ////////////////////////////////////////////////////////////////////////////////////////// -->
+
+ <script>
+
+ SELECT id, ( 6371 * acos( cos( radians(37) ) * cos( radians( lat ) ) * cos( radians( lng ) - radians(-122) ) + sin( radians(37) ) * sin( radians( lat ) ) ) ) AS distance FROM markers HAVING distance < 10 ORDER BY distance LIMIT 0 , 20;
+ //6371 for kilometers, 20 for number of locations, 10 distance from centre,
+
+ function searchLocations() {
+   var address = <%= @attraction.address %>;
+   var geocoder = new google.maps.Geocoder();
+   geocoder.geocode({address: address}, function(results, status) {
+     if (status == google.maps.GeocoderStatus.OK) {
+       searchLocationsNear(results[0].geometry.location);
+     } else {
+       alert(address + ' not found');
+     }
+   });
+ }
+
+
+ function downloadUrl(url,callback) {
+ var request = window.ActiveXObject ?
+     new ActiveXObject('Microsoft.XMLHTTP') :
+     new XMLHttpRequest;
+
+ request.onreadystatechange = function() {
+   if (request.readyState == 4) {
+     request.onreadystatechange = doNothing;
+     callback(request.responseText, request.status);
+   }
+ };
+
+ request.open('GET', url, true);
+ request.send(null);
+}
+
+function searchLocationsNear(center) {
+  clearLocations();
+
+  var radius = document.getElementById('radiusSelect').value;
+  var searchUrl = 'storelocator.php?lat=' + center.lat() + '&lng=' + center.lng() + '&radius=' + radius;
+  downloadUrl(searchUrl, function(data) {
+  var xml = parseXml(data);
+  var markerNodes = xml.documentElement.getElementsByTagName("marker");
+  var bounds = new google.maps.LatLngBounds();
+  for (var i = 0; i < markerNodes.length; i++) {
+    var id = markerNodes[i].getAttribute("id");
+    var name = markerNodes[i].getAttribute("name");
+    var name = markerNodes[i].getAttribute("name");
+    var address = markerNodes[i].getAttribute("address");
+    var distance = parseFloat(markerNodes[i].getAttribute("distance"));
+    var latlng = new google.maps.LatLng(
+        parseFloat(markerNodes[i].getAttribute("lat")),
+        parseFloat(markerNodes[i].getAttribute("lng")));
+
+    // createOption(name, distance, i);
+    createMarker(latlng, name, address);
+    bounds.extend(latlng);
+  }
+  map.fitBounds(bounds);
+ });
+}
+
+
+</script>
+ <!-- ///////////////////////////////////////////////////////////////////////////////////////////// -->
+
+<div>
+  <% if @current_user.present? %>
+      <%= link_to 'Add a review', new_review_path %>
+      <%= form_tag reviews_path do %>
+
+         <%= text_area_tag :comment  %>
+         <%= hidden_field_tag :attraction_id, "#{@attraction.id}" %>
+         <%= submit_tag 'Submit'%>
+      <hr>
+      <% end %>
+
+  <% else %>
+    <p><%= link_to 'Login', login_path %> to leave a comment</p>
+  <% end %>
+
+</div>
+
+<div>
+    <% @attraction.reviews.reverse.each do |review| %>
+      <h6><strong><%= review.user.name %> | <%= time_ago_in_words(review.created_at)%> ago</strong></h6>
+      <p><%= review.comment %></p>
+      <p><%= link_to 'Delete', review_path(review.id), method: 'delete' %></p>
+      <hr>
+    <% end %>
+
+
+</div>
