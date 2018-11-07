@@ -1,0 +1,41 @@
+
+
+<% if flash[:errors].present?  %>
+   <strong>Please correct the following errors:</strong>
+   <ol>
+   <% flash[:errors].each do |error| %>
+     <li><%= error %></li>
+   <% end %>
+   </ol>
+<% end %>
+
+
+<h5 class="createAccount">Create an Account</h5>
+
+<div class="form-group">
+  <%= form_for @user, html: {multipart: true} do |f| %>
+  <span>
+    <%= f.label :name %>
+    <%= f.text_field :name, class:"form-control" %>
+  </span>
+  <span>
+  <%= f.label :email %>
+  <%= f.text_field :email, class:"form-control", placeholder:"Enter email"%>
+</span>
+  <span>
+  <%= f.label :password %>
+  <%= f.password_field :password, class:"form-control", placeholder:"Password" %>
+</span>
+  <span>
+  <%= f.label :password_confirmation %>
+  <%= f.password_field :password_confirmation, id:"exampleDropdownFormPassword2", class:"form-control", placeholder:"Password confirmation"  %>
+</span >
+<br>
+  <span>
+  <%= f.label :image %>
+  <%= f.cl_image_upload :image, placeholder:"Password", class:"form-control"%>
+</span >
+<br>
+  <%= f.submit 'Create User', class:"btn btn-success" %>
+<% end %>
+</div>
