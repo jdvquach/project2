@@ -91,7 +91,8 @@ var listener = google.maps.event.addListener(map, "idle", function() {  //single
       <hr>
 
   <% else %>
-      <p><%= link_to 'Login', login_path%> to leave a comment</p>
+      <!-- <p><%= link_to 'Login', login_path%> to leave a comment</p> -->
+      <%= link_to 'Login to leave a comment', login_path , "data-toggle" => "modal", "data-target" => "#exampleModal", "data-whatever" => "@getbootstrap" %>
   <% end %>
 
 </div>

@@ -1,0 +1,21 @@
+<h2>Search results for "<%= @query %>"</h2>
+
+
+<% if @attractions.length===0 %>
+  Sorry, there are no results for "<%= @query %>"
+
+<% else %>
+
+<div class='card-columns resultsContainer'>
+  <% @attractions.each do |attraction| %>
+    <div class="card resultsCard" style="width: 20rem;">
+      <img class="card-img-top" src="<%= attraction.image %>" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title"><%= attraction.name %></h5>
+          <p class="card-text"><%= attraction.description %></p>
+          <a href="<%=attraction_path(attraction.id) %>" class="btn btn-primary">See this location</a>
+        </div>
+    </div>
+  <% end %>
+</div>
+<% end %>
