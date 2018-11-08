@@ -9,13 +9,7 @@
     <%= javascript_include_tag 'application' %>
     <%= cloudinary_js_config %>
     <link href="https://fonts.googleapis.com/css?family=Days+One|Montserrat+Subrayada|Sonsie+One" rel="stylesheet">
-
-
-
   </head>
-
-
-
   <body>
 
 <div class="navContainer">
@@ -63,16 +57,12 @@
                <%= cl_image_tag @current_user.image, class:"avartar" %>
              <% end %>
    </div>
-</div>
-<div class="navContainer2"></div>
+  </div>
+  <div class="navContainer2"></div>
 
-<%= yield %>
-
-
-
+  <%= yield %>
   </body>
 </html>
-
 
 <!-- ///////////LOGIN Form Popup///////////// -->
 
@@ -81,6 +71,11 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Sign in to continue</h5>
+        <% if flash[:error] %>
+         <br>
+         <h6 class="loginError">***<strong><%=  flash[:error]  %></strong>***</h6>
+         <br><br>
+        <% end %>
       </div>
       <div class="modal-body">
         <%= form_tag login_path  do %>
@@ -96,6 +91,7 @@
           <br>
 
             <div class="modal-footer">
+
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
               <%= submit_tag 'Login', class:"btn btn-info" %>
             <% end %>
