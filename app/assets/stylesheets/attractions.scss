@@ -16,6 +16,7 @@
   width: 100%;
 }
 
+<<<<<<< HEAD
 
 .attractionImage {
 
@@ -27,6 +28,8 @@
 
 }
 
+=======
+>>>>>>> 4aa195d14e0d9649c5fba2aa56258135527fa315
 .searchResultsCardTitle{
   font-size: 30px;
   opacity: 0.5;
@@ -39,17 +42,18 @@
   max-height: auto;
 }
 
-
+//hovereffects
 .rcontainer {
     position: relative;
-    width: 50%;
+    width: 80%;
+    height: 300px;
 }
 
 .rimage {
   opacity: 1;
   display: block;
-  width: 100%;
-  height: auto;
+  height: 100%;
+  width: auto;
   transition: .5s ease;
   backface-visibility: hidden;
 }
@@ -65,17 +69,39 @@
   text-align: center;
 }
 
-.rcontainer:hover .image {
+.rcontainer:hover .rimage {
   opacity: 0.3;
 }
 
-.rcontainer:hover .middle {
-  opacity: 1;
+.rcontainer:hover .rmiddle {
+  opacity: 0.8;
 }
 
 .rtext {
+  border-radius: 25px;
   background-color: #4CAF50;
   color: white;
-  font-size: 16px;
-  padding: 16px 32px;
+  font-size: 12px;
+  padding: 12px 20px;
+}
+
+.griddleContainer{
+  display: grid;
+  grid-template-columns: auto auto;
+  height: calc(100vh - 10px);
+  grid-gap: 130px;
+
+}
+
+//hover effects end
+
+
+.attractionImage {
+
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
 }
