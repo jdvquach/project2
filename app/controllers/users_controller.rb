@@ -37,7 +37,12 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find params[:id]
-    redirect_to root_path unless @user.id == @current_user.id
+    if @user.id != @current_user.id
+    #redirect_to root_path unless @user.id == @current_user.id
+    flash[:error] = "You cannot edit another User"
+    redirect_to root_path
+
+    end
   end
 
   def update
