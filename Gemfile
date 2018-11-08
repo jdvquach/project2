@@ -65,7 +65,7 @@ gem 'cloudinary'
 gem 'bootstrap', '~> 4.1.3'
 
 # Below added for Heroku
-gem 'rails_12factor'
+gem 'rails_12factor', group: :production
 
 gem 'jquery-rails'
 

@@ -26,7 +26,7 @@ class AttractionsController < ApplicationController
     @weather = HTTParty.get( url )
 
 
-    @venues = Attraction.near([lat, lng],20, :units=>:km)
+    @venues = Attraction.near([lat, lng],20, :units=>:km)  #attractions with 20km of marker
 
 
   end
