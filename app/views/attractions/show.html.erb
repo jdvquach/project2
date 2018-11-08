@@ -36,7 +36,6 @@
 
 
 <script>
-
 var locations =<%= @venues.select(:latitude, :longitude,:id, :image).to_json.html_safe %>
 // Initialize and add the map
 function initMap() {
