@@ -17,6 +17,7 @@ $('#reviewSubmit').on('click',() =>{
        <p><a href="/reviews/${response.id}" data-method="delete" rel="nofollow">Delete</a></p>
        <hr>`
      ).prependTo('#showReview');
+     $("textarea").val('');
   })
   .fail( console.warn );
 
