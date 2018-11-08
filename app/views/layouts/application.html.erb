@@ -79,8 +79,13 @@
    </div>
   </div>
   <div class="navContainer2"></div>
+  <% if flash[:error] %>
+    <br>
+    <h6 class="loginError">***<strong><%=  flash[:error]  %></strong>***</h6>
+    <br><br>
+  <% end %>
 
-  <%= yield %>
+<%= yield %>
   </body>
 </html>
 
@@ -91,11 +96,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Sign in to continue</h5>
-        <% if flash[:error] %>
-         <br>
-         <h6 class="loginError">***<strong><%=  flash[:error]  %></strong>***</h6>
-         <br><br>
-        <% end %>
+
       </div>
       <div class="modal-body">
         <%= form_tag login_path  do %>
