@@ -14,8 +14,8 @@
   <div>
 
   <h4>Address: <%= @attraction.address %></h4>
-  <h4>Current tempertature: <%= @weather['main']['temp'] %> &#176 C </h4>
-  <h4>Weather station: <%=@weather['name']  %></h4>
+  <h4>Current Tempertature: <%= @weather['main']['temp'] %> &#176 C </h4>
+  <h4>Weather Station: <%=@weather['name']  %></h4>
   <hr>
   <%= image_tag @attraction.image, class:"attractionImage" %>
   <br>
@@ -36,7 +36,6 @@
 
 
 <script>
-
 var locations =<%= @venues.select(:latitude, :longitude,:id, :image).to_json.html_safe %>
 // Initialize and add the map
 function initMap() {
@@ -99,13 +98,13 @@ var listener = google.maps.event.addListener(map, "idle", function() {  //single
       <hr>
 
   <% else %>
-<<<<<<< HEAD
+
 
       <p><%= link_to 'Login', login_path%> to leave a comment</p>
-=======
+
       <!-- <p><%= link_to 'Login', login_path%> to leave a comment</p> -->
       <%= link_to 'Login to leave a comment', login_path , "data-toggle" => "modal", "data-target" => "#exampleModal", "data-whatever" => "@getbootstrap" %>
->>>>>>> 571b99e09c312c0ee5d4cabb96f81f6e07cab6d1
+
   <% end %>
 
 </div>

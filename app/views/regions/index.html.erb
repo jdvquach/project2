@@ -1,3 +1,16 @@
+<!-- whats around me -->
+<div>
+  <form id="searchMe">
+    <select id="radius" name="radius">
+      <option value="5">5 km</option>
+      <option value="10">10 km</option>
+      <option value="15">15 km</option>
+    </select>
+    <button id="findMe">Find whats around me</button>
+  </form>
+</div>
+
+
 
 <!--- carousel part ---------->
 <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel" class="carouselZ-index ">
@@ -31,19 +44,7 @@
       </a>
     </div>
 
-<!--- Search part ---------->
 
-
-
-<div class="serachContainer">
-    <h1 class="text" class="searchItem">PLACES TO VISIT IN NSW</h1>
-    <%= form_tag search_attractions_path do %>
-      <div class="searchItem">
-        <input name="query" placeholder="Search" type="text" >
-        <button type="submit" class="btn btn-info">Search</button>
-      </div>
-    <% end %>
-</div>
 
 
 <!--- region part ---------->
@@ -53,10 +54,11 @@
 <div class="regionContainer">
   <% @regions.each do |region| %>
     <div class="image">
-    <%= cl_image_tag region.image, class:"regionImage"%>
-    <div class="imageNameBox">
-    <%= link_to region.name, region_path(region.id) %>
-    </div>
+      <%= link_to cl_image_tag(region.image), region_path(region.id), class:"regionImage"%>
+         <!-- <%= cl_image_tag region.image, class:"regionImage"%> -->
+      <div class="imageNameBox">
+        <%= link_to region.name, region_path(region.id) %>
+      </div>
     </div>
   <% end %>
 </div>

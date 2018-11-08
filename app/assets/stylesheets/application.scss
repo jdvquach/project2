@@ -35,6 +35,43 @@ font-size: 30pt;
 padding:20px;
 }
 
+//////////////// search part ///////////////////////////////////
+
+.text{
+  font-size:15px;
+  padding:20px;
+  text-align:center;
+  align-self: center;
+}
+
+.serachContainer {
+  display: flex;
+  // margin: 0;
+  padding: 0;
+  // background-color: #D6D4CE;
+  // width: 100vw!important;
+  width: 300px!important;
+  height: 10vh;
+  align-items: center;
+  justify-items:center;
+  justify-content:center;
+  align-self: center;
+
+}
+
+.searchItem {
+  display: block ;
+  align-self: center;
+  margin: 0!important;
+  align-content: flex-end;
+}
+
+a:hover{
+  text-decoration: none;
+}
+
+
+
 ////////////////Login Form//////////////////////////////
 
 .login{
@@ -51,7 +88,9 @@ padding:20px;
 ////////////////Home page NavBar//////////////////////////////
 
 .navContainer {
-  display: flex;
+  // display: flex;
+  display: grid;
+  grid-template-columns: 15% 20% 65%;
   margin: 0;
   padding: 0;
   background-color: #17a2b8;
@@ -71,6 +110,7 @@ padding:20px;
   align-self: center;
   padding-right: 2vw;
   margin: 0!important;
+  justify-self: end;
 }
 
 .item1 a{

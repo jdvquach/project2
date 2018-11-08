@@ -1,4 +1,4 @@
-<h2>Search results for "<%= @query %>"</h2>
+<h3>Search results for "<%= @query %>"</h3>
 
 
 <% if @attractions.length===0 %>
@@ -6,14 +6,11 @@
 
 <% else %>
   <div class='griddleContainer'>
-  <% @attractions.each do |attraction| %>
-    <div class="rcontainer">
-      <img src="<%= attraction.image %>" alt="Avatar" class="image" style="width:100%">
-      <div class="rmiddle">
-        <%= link_to attraction.name, attraction_path(attraction.id), class: "rtext" %>
-        <!-- <div class="rtext"><%= attraction.name %></div> -->
+    <% @attractions.each do |attraction| %>
+      <%= link_to cl_image_tag(attraction.image), attraction_path(attraction.id), class:"resultsImage"%>
+      <div class="centered">
+        <%= attraction.name %>
       </div>
-    </div>
   <% end %>
   </div>
 <% end %>

@@ -6,36 +6,6 @@
 
 
 
-//////////////// search part ///////////////////////////////////
-
-.text{
-  font-size:15px;
-  padding:20px;
-  text-align:center;
-  align-self: center;
-}
-
-.serachContainer {
-  display: flex;
-  // margin: 0;
-  padding: 0;
-  background-color: #D6D4CE;
-  width: 100vw!important;
-  height: 10vh;
-  align-items: center;
-  justify-items:center;
-  justify-content:center;
-
-}
-
-.searchItem {
-  display: block ;
-  align-self: center;
-  margin: 0!important;
-  align-content: flex-end;
-}
-
-
 
 //////////////// Region homePage part ///////////////////////////////////
 
@@ -43,9 +13,10 @@
   display: grid;
   margin-top: 5vh;
   // border: 1px black solid;
-  width: 70vw;
+  // width: 70vw;
   height: 140vh;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: auto auto auto;
+  // grid-template-columns: repeat(3, 1fr);
   grid-template-rows:  repeat(3, 1fr);
   grid-column-gap: 2px;
   grid-row-gap: 2px;
@@ -144,3 +115,8 @@ height: 50vh;
   height: 40vh;
 
 }
+.regionContainer img{
+  width: 28vw;
+}
+
+/////////////////////////////////////////////////////

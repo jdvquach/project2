@@ -1,0 +1,19 @@
+<h2>Search results for "<%= @query %>"</h2>
+
+
+<% if @attractions.length===0 %>
+  Sorry, there are no results for "<%= @query %>"
+
+<% else %>
+  <div class='griddleContainer'>
+  <% @attractions.each do |attraction| %>
+    <div class="rcontainer">
+      <img src="<%= attraction.image %>" alt="Avatar" class="image" style="width:100%">
+      <div class="rmiddle">
+        <%= link_to attraction.name, attraction_path(attraction.id), class: "rtext" %>
+        <!-- <div class="rtext"><%= attraction.name %></div> -->
+      </div>
+    </div>
+  <% end %>
+  </div>
+<% end %>

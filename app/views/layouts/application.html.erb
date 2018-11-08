@@ -10,15 +10,47 @@
     <%= cloudinary_js_config %>
     <link href="https://fonts.googleapis.com/css?family=Days+One|Montserrat+Subrayada|Sonsie+One" rel="stylesheet">
 
-
+    <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
 
   </head>
-
-
-
   <body>
 
+<div class="navContainer">
+  <a href="<%= regions_path %>"><h1 class="logo" id="logo">Trippo</h1></a>
+
+
     <!-- ///////////Nav Items///////////// -->
+
+    <!--- Search part ---------->
+
+
+
+    <div class="serachContainer">
+        <%= form_tag search_attractions_path do %>
+          <div class="searchItem">
+            <input name="query" placeholder="Search" type="text" >
+            <button type="submit" class="btn btn-info">Go</button>
+          </div>
+        <% end %>
+    </div>
+
+    <div class="item1">
 
     <div class="navContainer">
             <h1 class="logo" id="logo">Trippo</h1>
@@ -41,6 +73,7 @@
                   |
                  <%= link_to 'Sign up ', new_user_path  %>
 
+<<<<<<< HEAD
                  <% end %>
 
                  <% if @current_user.present? %>
@@ -56,12 +89,29 @@
 
 
 
+=======
+             <% if @current_user.present? %>
+               |
+             <span class="welcom">Welcome, <%= @current_user.name %></span>
+               <%= cl_image_tag @current_user.image, class:"avartar" %>
+             <% end %>
+   </div>
+  </div>
+  <div class="navContainer2"></div>
+  <% if flash[:error] %>
+    <br>
+    <h6 class="loginError">***<strong><%=  flash[:error]  %></strong>***</h6>
+    <br><br>
+  <% end %>
+
+<%= yield %>
+>>>>>>> 17adcea0c68b22a1261a9eefe614a7e4fb133421
   </body>
 </html>
 
-
 <!-- ///////////LOGIN Form Popup///////////// -->
 
+<<<<<<< HEAD
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -73,6 +123,25 @@
             <span>
             <%= label_tag :email %>
             <%= email_field_tag :email, nil, class:"form-control", id:"recipient-name", placeholder:"Enter email" %>
+=======
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Sign in to continue</h5>
+
+      </div>
+      <div class="modal-body">
+        <%= form_tag login_path  do %>
+          <span>
+          <%= label_tag :email %>
+          <%= email_field_tag :email, nil, class:"form-control", id:"recipient-email", placeholder:"Enter email" %>
+        </span>
+          <br>
+          <span>
+            <%= label_tag :password%>
+            <%= password_field_tag :password, nil, type:"text", class:"form-control", id:"recipient-password"%>
+>>>>>>> 17adcea0c68b22a1261a9eefe614a7e4fb133421
           </span>
             <br>
             <span>
@@ -81,11 +150,20 @@
             </span>
             <br>
 
+<<<<<<< HEAD
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <%= submit_tag 'Login', class:"btn btn-info" %>
               <% end %>
               </div>
+=======
+            <div class="modal-footer">
+
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <%= submit_tag 'Login', class:"btn btn-info" %>
+            <% end %>
+            </div>
+>>>>>>> 17adcea0c68b22a1261a9eefe614a7e4fb133421
 
         </div>
 
