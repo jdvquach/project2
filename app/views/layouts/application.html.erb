@@ -19,8 +19,23 @@
   <body>
 
 <div class="navContainer">
-        <h1 class="logo" id="logo">Trippo</h1>
+  <a href="<%= regions_path %>"><h1 class="logo" id="logo">Trippo</h1></a>
+
+
     <!-- ///////////Nav Items///////////// -->
+
+    <!--- Search part ---------->
+
+
+
+    <div class="serachContainer">
+        <%= form_tag search_attractions_path do %>
+          <div class="searchItem">
+            <input name="query" placeholder="Search" type="text" >
+            <button type="submit" class="btn btn-info">Go</button>
+          </div>
+        <% end %>
+    </div>
     <div class="item1">
 
        <%= link_to 'Home ', regions_path %>
