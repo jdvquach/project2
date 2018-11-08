@@ -1,8 +1,14 @@
 class SessionController < ApplicationController
   def new
+
+
+
   end
 
   def create
+    # Save the URL referrer just before login so we ca n re-direct to same url after login.
+    session[:referrer] = request.referrer
+
     # see if the email address entered actually corresponds to a user in the table
     user = User.find_by email: params[:email]
 
@@ -15,9 +21,10 @@ class SessionController < ApplicationController
       # is logged in on all future pages
       session[:user_id] = user.id
 
-      redirect_to ( root_path )
+      # redirect_to ( root_path )
+      redirect_to session[:referrer]
+      # raise 'hell'
 
-      #redirect_to regions_path( user.id )
     else
       # Bad credentials, i.e. unsuccessful login
 
