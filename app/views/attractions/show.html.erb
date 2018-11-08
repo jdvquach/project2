@@ -1,117 +1,128 @@
 <script>
   const attraction_id = <%= @attraction.id %>;
 </script>
-<div class='container'>
-   <div class="row">
-    <div class="col-md-12">
 
-  <h2>Attraction: <%=@attraction.name %></h2>
+<!-- ///////////////Image and map //////////////////////////-->
 
-  <hr>
+<div class="mapAndImageContainer">
 
-  <strong><%= link_to  'Back', region_path(@attraction.region.id) %></strong>
+    <%= image_tag @attraction.image, class:"attraction-show-page-img" %>
 
-  <div>
+    <!--The div element for the map -->
+    <div id="map">
+    </div>
+    <!--map -->
+    <script>
 
-  <h4>Address: <%= @attraction.address %></h4>
-  <h4>Current Tempertature: <%= @weather['main']['temp'] %> &#176 C </h4>
-  <h4>Weather Station: <%=@weather['name']  %></h4>
-  <hr>
-  <%= image_tag @attraction.image, class:"attractionImage" %>
-  <br>
-  <br>
-  <br>
-  <h3><%= @attraction.description %></h3>
-  </div>
+            var locations =<%= @venues.select(:latitude, :longitude,:id, :image).to_json.html_safe %>
+            // Initialize and add the map
+            function initMap() {
+              // The location of marker
 
-<br>
-<br>
-<br>
+              // The map, centered at marker
+              var bounds = new google.maps.LatLngBounds();  //create boundary box, no fixed dimensions
 
+              var map = new google.maps.Map(
+                  document.getElementById('map'), {zoom: 9, center: marker});
+              // The marker, positioned at marker
+              var marker = new google.maps.Marker({position: marker, map: map, icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'});
 
-<!--The div element for the map -->
+              var infoWindow = new google.maps.InfoWindow({maxWidth:320});
 
-  <div id="map"></div>
+            ////////////////////////////////////////////////////
+              for(let i = 0; i<locations.length; i++){
+                var m = new google.maps.Marker({
+                  position: {
+                    lat: locations[i].latitude,
+                    lng: locations[i].longitude
+                  },
+                  map:map,
+                  content: `<div>${locations[i].name}</div><div class="mapImageContainer"><img class='windowImg' src=${locations[i].image}></div><a href="/attractions/${locations[i].id}">Go to attraction</a>`, url: `/attractions/${locations[i].id}`
 
+                });
+                bounds.extend(m.getPosition());  //boundary box stretches by each marker's (m) position
+                google.maps.event.addListener(m, 'click', function() {
+                  infoWindow.setContent(this.content);
+                  infoWindow.open(this.getMap(), this);
+              })
+            }
+            /////////////////////////////////////////////////////////
+            map.fitBounds(bounds);
+            var listener = google.maps.event.addListener(map, "idle", function() {  //single attraction, do not zoom in all the way
+              if (map.getZoom() > 16) map.setZoom(16);
+              google.maps.event.removeListener(listener);
+            });
+            // map.setZoom(9);  //centre on attraction
+            }; //end of initmap
+        </script>
+     <!--Load the API from the specified URL
+     * The async attribute allows the browser to render the page while the API loads
+     * The key parameter will contain your own API key (which is not needed for this tutorial)
+     * The callback parameter executes the initMap() function
+     -->
+     <script async defer
+     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfdeYzd23jyR3fKx0oRtdlqCDK-NEzwcI&callback=initMap">
 
-
-<script>
-var locations =<%= @venues.select(:latitude, :longitude,:id, :image).to_json.html_safe %>
-// Initialize and add the map
-function initMap() {
-  // The location of marker
-
-  // The map, centered at marker
-  var bounds = new google.maps.LatLngBounds();  //create boundary box, no fixed dimensions
-
-  var map = new google.maps.Map(
-      document.getElementById('map'), {zoom: 9, center: marker});
-  // The marker, positioned at marker
-  var marker = new google.maps.Marker({position: marker, map: map, icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'});
-
-  var infoWindow = new google.maps.InfoWindow({maxWidth:320});
-
-////////////////////////////////////////////////////
-  for(let i = 0; i<locations.length; i++){
-    var m = new google.maps.Marker({
-      position: {
-        lat: locations[i].latitude,
-        lng: locations[i].longitude
-      },
-      map:map,
-      content: `<div>${locations[i].name}</div><div class="mapImageContainer"><img class='windowImg' src=${locations[i].image}></div><a href="/attractions/${locations[i].id}">Go to attraction</a>`, url: `/attractions/${locations[i].id}`
-
-    });
-    bounds.extend(m.getPosition());  //boundary box stretches by each marker's (m) position
-    google.maps.event.addListener(m, 'click', function() {
-      infoWindow.setContent(this.content);
-      infoWindow.open(this.getMap(), this);
-  })
-}
-/////////////////////////////////////////////////////////
-map.fitBounds(bounds);
-var listener = google.maps.event.addListener(map, "idle", function() {  //single attraction, do not zoom in all the way
-  if (map.getZoom() > 16) map.setZoom(16);
-  google.maps.event.removeListener(listener);
-});
-// map.setZoom(9);  //centre on attraction
-}; //end of initmap
-    </script>
- <!--Load the API from the specified URL
- * The async attribute allows the browser to render the page while the API loads
- * The key parameter will contain your own API key (which is not needed for this tutorial)
- * The callback parameter executes the initMap() function
- -->
- <script async defer
- src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfdeYzd23jyR3fKx0oRtdlqCDK-NEzwcI&callback=initMap">
-
- </script>
-
-<div>
-  <% if @current_user.present? %>
-
-      <fieldset>
-      Comment:<br>
-      <textarea id="reviewComment"></textarea>
-      </fieldset>
-      <button id="reviewSubmit">Submit</button>
-      <hr>
-
-  <% else %>
-
-
-      <p><%= link_to 'Login', login_path%> to leave a comment</p>
-
-      <!-- <p><%= link_to 'Login', login_path%> to leave a comment</p> -->
-      <%= link_to 'Login to leave a comment', login_path , "data-toggle" => "modal", "data-target" => "#exampleModal", "data-whatever" => "@getbootstrap" %>
-
-  <% end %>
+     </script>
 
 </div>
 
-<div id="showReview">
+
+
+<!-- ///////////////////////Indevisual attraction Info////////////////////////////////// -->
+<div class="indAtrInfWrap">
+
+    <div class="titleBox1">
+      <h2 class="attractiontitle"><%=@attraction.name %></h2>
+    </div>
+    <div class="titleBox2">
+      <h5><strong>Address: </strong><%= @attraction.address %></h5>
+      <h5><strong>Current Tempertature: </strong> <%= @weather['main']['temp'] %> &176 C</h5>
+      <h5><strong>Weather Station: </strong> <%=@weather['name']  %></h5>
+    </div>
+
+</div>
+<div class="backRegion">
+  <strong><%= link_to  'Back', region_path(@attraction.region.id) , class:"badge badge-pill badge-info" %></strong>
+</div>
+
+<div class="attrDescriptionBox">
+<p class="attractionDescription"><%= @attraction.description %></p>
+<hr>
+</div>
+
+
+
+<!-- /////////Rivew Show Part/////////////Login part for Adding Rivew///////////// -->
+
+
+<div class="reviewInput">
+    <% if @current_user.present? %>
+
+        <fieldset>
+        Comment:<br>
+        <textarea id="reviewComment" class="form-control"></textarea>
+        </fieldset>
+        <div class="reviewBotton">
+        <button id="reviewSubmit" class="btn btn-info" >Submit</button>
+        </div>
+        <hr>
+
+    <% else %>
+
+
+
+        <!-- <p><%= link_to 'Login', login_path%> to leave a comment</p> -->
+        <%= link_to 'Login to leave a comment', login_path , "data-toggle" => "modal", "data-target" => "#exampleModal", "data-whatever" => "@getbootstrap" , class:"btn btn-info"%>
+
+    <% end %>
+
+</div>
+
+
+<div id="showReview" class="showReview">
     <% @attraction.reviews.reverse.each do |review| %>
-      <h6><strong><%= review.user.name %> | <%= time_ago_in_words(review.created_at)%> ago</strong></h6>
+      <h6 class="reviewOwner"><strong><%= review.user.name %> | <%= time_ago_in_words(review.created_at)%> ago</strong></h6>
       <p><%= review.comment %></p>
 
       <% if review.user == @current_user %>
@@ -120,8 +131,4 @@ var listener = google.maps.event.addListener(map, "idle", function() {  //single
 
       <hr>
     <% end %>
-</div>
-
-    </div>
-  </div>
 </div>

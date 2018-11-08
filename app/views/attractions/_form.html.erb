@@ -1,35 +1,33 @@
-<%= form_for @attraction, html: {multipart: true} do |f| %>
 
-<fieldset>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </fieldset>
-  <fieldset>
-    <%= f.label :address %>
-    <%= f.text_field :address %>
-  </fieldset>
-  <fieldset>
-    <%= f.label :latitude %>
-    <%= f.text_field :latitude %>
-  </fieldset>
-  <fieldset>
-    <%= f.label :longitude %>
-    <%= f.text_field :longitude %>
-  </fieldset>
-
+<div class="form-group">
+    <%= form_for @attraction, html: {multipart: true} do |f| %>
     <fieldset>
-      <%= f.label :region_id, 'Region' %>  <!--drop down selection-->
-      <%= f.collection_select :region_id, Region.all, :id, :name, prompt: 'Please choose a region'  %>
-    </fieldset>
+        <%= f.label :name %>
+        <%= f.text_field :name, class:"form-control" %>
+      </fieldset>
+      <fieldset>
+        <%= f.label :address %>
+        <%= f.text_field :address, class:"form-control" %>
+      </fieldset>
+      <fieldset>
+        <%= f.label :latitude %>
+        <%= f.text_field :latitude , class:"form-control" %>
+      </fieldset>
+      <fieldset>
+        <%= f.label :longitude %>
+        <%= f.text_field :longitude , class:"form-control" %>
+      </fieldset>
 
+      <fieldset>
+        <%= f.label :region_id, 'Region' %>  <!--drop down selection-->
+        <%= f.collection_select :region_id, Region.all, :id, :name, prompt: 'Please choose a region' , class:"form-control"%>
+      </fieldset>
 
-
-
-  <fieldset>
-    <%= f.label :image, 'Image URL' %>
-    <%= f.text_field :image %>            <!--cloudinary change -->
-  </fieldset>
-  <%= f.submit %>
-
-
-<% end %>
+      <fieldset>
+        <%= f.label :image, 'Image URL' %>
+        <%= f.text_field :image , class:"form-control"%>            <!--cloudinary change -->
+      </fieldset>
+      <%= f.submit 'Submit', class:"btn btn-info" %>
+      <% end %>
+</div>
+<%= link_to "Back to all attractions", attractions_path , class:"addNewAttraction" %>
