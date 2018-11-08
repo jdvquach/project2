@@ -8,9 +8,9 @@
   <div class='griddleContainer'>
     <% @attractions.each do |attraction| %>
       <%= link_to cl_image_tag(attraction.image), attraction_path(attraction.id), class:"resultsImage"%>
-      <div class="centered">
+      <!-- <p class="centered">
         <%= attraction.name %>
-      </div>
+      </p> -->
   <% end %>
   </div>
 <% end %>
