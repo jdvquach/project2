@@ -37,7 +37,7 @@
 
 
 
-//////////////// carousel part ///////////////////////////////////
+//////////////// Region homePage part ///////////////////////////////////
 
 .regionContainer {
   display: grid;
@@ -77,4 +77,70 @@
 
 }
 
-/////////////////////////////////////////////////////
+///////////////////////Region ShowPage Css //////////////////////////////
+
+.regionShowpageContainer {
+  display: grid;
+  // border: 1px black solid;
+  width: 70vw;
+  height: 50vh;
+  grid-template-columns: 1fr 3fr;
+  margin-bottom:40px;
+}
+
+.regionTopGrid{
+ border: 1px red solid;
+}
+
+.regionInfo {
+  background-color:rgba(23, 162, 184,0.3);
+  padding:40px;
+  font-size:11pt;
+}
+.regionShowTitle{
+  font-size:20pt;
+  color:#117888;
+}
+
+.topImage{
+width: 34vw;
+height: 50vh;
+}
+
+/////////////////////Region Show page attractions part Css //////////////////////////////
+
+
+.attraction-Wrapper{
+  display: grid;
+  // padding: 20px;
+  // background: yellow;
+  width: 70vw;
+  // height: 100vh;
+  grid-template-columns: 34vw 36vw ;
+  // grid-template-rows: auto;
+  // grid-column-gap: 2vw;
+  grid-row-gap: 30px;
+}
+.attractionInfo{
+  background-color:rgba(214, 212, 206,0.5);
+  padding: 30px;
+  // width: 34vw;
+}
+
+.infoColor{
+  color:#117888;
+  text-decoration: none;
+  }
+
+
+.attractionInfo a:hover{
+  color:#00e6e6;
+  text-decoration: none;
+}
+
+
+.attractionImageSize img{
+  width: 34vw;
+  height: 40vh;
+
+}
