@@ -1,23 +1,32 @@
 
 
+<!-- Show region info -->
 
-
-<h2>Show Region</h2>
-<br>
-  <div>
-    <%= cl_image_tag @region.image, class:"image",  alt: @region.name  %>
+  <div class="regionShowpageContainer">
+    <div class="regionShowImage" class="regionTopGrid">
+      <%= cl_image_tag @region.image, class:"topImage",  alt: @region.name  %>
+    </div>
+    <div class="regionInfo" class="regionTopGrid">
+      <h2 class="regionShowTitle"><%= @region.name %> Attractions</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit, sapiente eius. Similique alias esse itaque necessitatibus temporibus nesciunt excepturi cum quidem dolorem sunt neque, natus ad obcaecati.sit amet, consectetur adipisicing elit. Velit, sapiente eius. Similique alias esse itaque necessitatibus temporibus nesciunt excepturi cum quidem dolorem sunt neque, natus ad obcaecati. Adipisicing elit. Velit, sapiente eius. Similique alias esse itaque necessitatibus temporibus nesciunt excepturi cum quidem dolorem sunt neque, natus ad obcaecati. </p>
+    </div>
   </div>
-<h2 ><%= @region.name %> Attractions</h2>
 
 
 
 
-<h4>Attractions:</h4>
 
+<!-- Show regions attraction lists -->
+
+
+<!-- <h4>Attractions:</h4> -->
+<div class="attraction-Wrapper">
   <% @region.attractions.each do |attraction| %>
 
-  <%= cl_image_tag attraction.image, size:"200x200"%>
-
-  <h5><%= link_to attraction.name, attraction_path(attraction.id), id: "attractionName"%></h5>
-
+  <%= link_to cl_image_tag(attraction.image),attraction_path(attraction.id),  class:"attractionImageSize"%>
+    <div class="attractionInfo">
+      <h5><%= link_to attraction.name,  attraction_path(attraction.id) , class:"infoColor"%></h5>
+  <%= attraction.description %>
+  </div>
   <% end %>
+</div>
