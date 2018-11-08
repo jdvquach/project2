@@ -33,20 +33,18 @@
 
 <!--- Search part ---------->
 
+
+
 <div class="serachContainer">
     <h1 class="text" class="searchItem">PLACES TO VISIT IN NSW</h1>
-  <form class="form-inline" class="searchform">
-      <%= form_tag search_attractions_path do %>
+    <%= form_tag search_attractions_path do %>
       <div class="searchItem">
-      <input type="text" class="form-control"  placeholder="Search">
-    <!-- </div> -->
-    <button type="submit" class="btn btn-info">Search</button>
-  </div>
-
+        <input name="query" placeholder="Search" type="text" >
+        <button type="submit" class="btn btn-info">Search</button>
+      </div>
     <% end %>
-  </form>
-
 </div>
+
 
 <!--- region part ---------->
 
