@@ -24,7 +24,8 @@ class SessionController < ApplicationController
       # Set a flash message which exists *just for the next page load*
       flash[:error] = "Invalid email address or password"
 
-      redirect_to( login_path )
+      #redirect_to( login_path )
+      redirect_to( root_path )
     end
   end
 
