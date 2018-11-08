@@ -4,13 +4,13 @@ $(document).ready(function(){
 $('#reviewSubmit').on('click',() =>{
 
   const comment = $('#reviewComment').val();
-  console.log( 'submit!', comment);
+  // console.log( 'submit!', comment);
 
 //Perform a POST ajax request to our Rails server,passing the form data as second //argument object
 // Posts to '/reviews', i.e. "reviews#create"
   $.post(url, { comment, attraction_id })  //because variable and  key same
   .done( response => {
-    console.log(response);
+    // console.log(response);
 
     $(`<h6><strong>${response.user.name} | just now</strong></h6>
        <p>${response.comment}</p>
@@ -23,23 +23,18 @@ $('#reviewSubmit').on('click',() =>{
 }); // review submit handler
 
 
-  // const displayReviews = response => {
-  //
-  //   console.log( response );
-  //
-  //   response.forEach( review => {
-  //
-  //     // console.log(dog.name);
-  //
-  //     $('<li>').html(`${review.comment}`)
-  //     //.append( $('<img>', {src: dog.image}))
-  //     .appendTo('#dogList');
-  //   });
-  //
-  // };
+  const displayReviews = response => {
 
-  // $.getJSON(url)
-  // .done( displayReviews )
-  // .fail(console.warn);
+    // console.log( response );
+
+    response.forEach( review => {
+
+      $('<li>').html(`${review.comment}`)
+
+    });
+
+  };
+
+
 
 });  // $(document).ready()
