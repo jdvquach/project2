@@ -41,10 +41,11 @@
 <div class="regionContainer">
   <% @regions.each do |region| %>
     <div class="image">
-    <%= cl_image_tag region.image, class:"regionImage"%>
-    <div class="imageNameBox">
-    <%= link_to region.name, region_path(region.id) %>
-    </div>
+      <%= link_to cl_image_tag(region.image), region_path(region.id), class:"regionImage"%>
+         <!-- <%= cl_image_tag region.image, class:"regionImage"%> -->
+      <div class="imageNameBox">
+        <%= link_to region.name, region_path(region.id) %>
+      </div>
     </div>
   <% end %>
 </div>
