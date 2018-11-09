@@ -13,18 +13,19 @@
   display: grid;
   margin-top: 5vh;
   // border: 1px black solid;
-  // width: 70vw;
+  width: 70vw;
   height: 140vh;
   grid-template-columns: auto auto auto;
   // grid-template-columns: repeat(3, 1fr);
   grid-template-rows:  repeat(3, 1fr);
-  grid-column-gap: 2px;
+  grid-column-gap: 2vw;
   grid-row-gap: 2px;
   position: relative;
+  justify-content:center;
 }
 
 .imageNameBox{
-  background: none repeat scroll 0 0 #17a2b8;
+  background: none repeat scroll 0 0 #14ba8f;
   // opacity: 0.5;
   top:0;
   left:0;
