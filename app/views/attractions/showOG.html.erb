@@ -18,6 +18,7 @@
 
       // Initialize and add the map, this runs when below async function returns from google maps.
       function initMap() {
+
         var bounds = new google.maps.LatLngBounds();  //create boundary box, no fixed dimensions
 
         //place map at <div id="map">, set zoom level, center view on var marker.
@@ -25,7 +26,7 @@
             document.getElementById('map'), {zoom: 9, center: marker});
 
         // create var marker, positioned at this marker, place on thisMap
-        var marker = new google.maps.Marker({position: picked, map: thisMap});
+        var marker = new google.maps.Marker({position: marker, map: thisMap});
 
         //setup new infoWindow
         var infoWindow = new google.maps.InfoWindow({maxWidth:320});
@@ -81,7 +82,7 @@
     </div>
     <div class="titleBox2">
       <h5><strong>Address: </strong><%= @attraction.address %></h5>
-      <h5><strong>Current Tempertature: </strong> <%= @weather['main']['temp'] %> &176 C</h5>
+      <h5><strong>Current Tempertature: </strong> <%= @weather['main']['temp'] %> &#176 C</h5>
       <h5><strong>Weather Station: </strong> <%=@weather['name']  %></h5>
     </div>
 
@@ -92,13 +93,8 @@
 
 <div class="attrDescriptionBox">
 <p class="attractionDescription"><%= @attraction.description %></p>
-
 <hr>
-
-
 </div>
-
-
 
 
 
@@ -140,5 +136,4 @@
 
       <hr>
     <% end %>
-
 </div>
