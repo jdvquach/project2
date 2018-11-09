@@ -1,5 +1,6 @@
 $(document).ready(function(){
-  const url = 'http://localhost:3000/reviews';
+  // const url = 'http://localhost:3000/reviews';
+  const url = 'https://trippo00.herokuapp.com/reviews';
 
 $('#reviewSubmit').on('click',() =>{
 
@@ -26,7 +27,7 @@ $('#reviewSubmit').on('click',() =>{
 
   const displayReviews = response => {
 
-    // console.log( response );
+    //console.log( response );
 
     response.forEach( review => {
 
