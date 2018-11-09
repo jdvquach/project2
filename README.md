@@ -5,15 +5,17 @@ There are so many places to explore. All the information you need is available r
 
 ## Screenshot:
 
-![Screenshot](/images/trippo.JPG)
+![Homepage](/images/trippo.jpg)
 
 ## Wireframes:
 
-![Screenshot](/images/trippo_UI.JPG)
+![UI](/images/trippo_ui.jpg)
+
+![UI](/images/trippo_ui2.jpg)
 
 ## ERD:
 
-![Screenshot](/images/trippo.JPG)
+![ERD](/images/trippo_erd.png)
 
 ## CORE REQUIREMENTS
 Make sure to do all of the following with your app.
@@ -39,7 +41,7 @@ associated correctly! If you didn't get to try a many-to-many association in you
 
 ## Visit our site!
 
-https://lifetips.herokuapp.com/login
+https://trippo00.herokuapp.com
 
 ## Technology Stack:
 
