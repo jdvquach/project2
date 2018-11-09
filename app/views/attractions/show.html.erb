@@ -25,7 +25,7 @@
             document.getElementById('map'), {zoom: 9, center: marker});
 
         // create var marker, positioned at this marker, place on thisMap
-        var marker = new google.maps.Marker({position: picked, map: thisMap});
+        var marker = new google.maps.Marker({position: marker, map: thisMap});
 
         //setup new infoWindow
         var infoWindow = new google.maps.InfoWindow({maxWidth:320});
@@ -135,5 +135,4 @@
 
       <hr>
     <% end %>
-
 </div>
