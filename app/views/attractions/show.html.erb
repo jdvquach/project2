@@ -9,66 +9,55 @@
     <%= image_tag @attraction.image, class:"attraction-show-page-img" %>
 
     <!--The div element for the map -->
-    <div id="map">
-    </div>
-    <!--map -->
-    <script>
-      //proximity array, deconstruct, get lat, lng, id, image
-      var locations =<%= @venues.select(:latitude, :longitude,:id, :image).to_json.html_safe %>
-
-      // Initialize and add the map, this runs when below async function returns from google maps.
-      function initMap() {
-        var bounds = new google.maps.LatLngBounds();  //create boundary box, no fixed dimensions
-
-        //place map at <div id="map">, set zoom level, center view on var marker.
-        var thisMap = new google.maps.Map(
-            document.getElementById('map'), {zoom: 9, center: marker});
-
-        // create var marker, positioned at this marker, place on thisMap
-        var marker = new google.maps.Marker({position: marker, map: thisMap});
-
-        //setup new infoWindow
-        var infoWindow = new google.maps.InfoWindow({maxWidth:320});
-
-      ////////////////////////////////////////////////////
-        for(let i = 0; i<locations.length; i++){   //loop through location array, creating new marker
-          var m = new google.maps.Marker({    //Individual marker (m)
-            position: {
-              lat: locations[i].latitude,
-              lng: locations[i].longitude
-            },
-            map:thisMap,        //applies to map created created map
-            content: `<div>${locations[i].name}</div><div class="mapImageContainer"><img class='windowImg' src=${locations[i].image}></div><a href="/attractions/${locations[i].id}">Go to attraction</a>`, url: `/attractions/${locations[i].id}`   //this only in infoWindow on click.
-          });
-
-          bounds.extend(m.getPosition());  //boundary box stretches by each marker's (m) position
-
-          //create event listener for marker click
-          google.maps.event.addListener(m, 'click', function() {
-            infoWindow.setContent(this.content);
-            infoWindow.open(this.getMap(), this);
-          })
-        }  //end of for loop
-            /////////////////////////////////////////////////////////
-
-        thisMap.fitBounds(bounds);
-
-            //single attraction, do not zoom in all the way
-        var listener = google.maps.event.addListener(map, "idle", function() {
-          if (map.getZoom() > 16) map.setZoom(16);
-          google.maps.event.removeListener(listener);
-        });
-      }; //end of initmap
-    </script>
-     <!--Load the API from the specified URL
-     * The async attribute allows the browser to render the page while the API loads
-     * The callback parameter executes the initMap() function
-     -->
-     <script async defer
-     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfdeYzd23jyR3fKx0oRtdlqCDK-NEzwcI&callback=initMap">
-
+    <!--The div element for the map -->
+   <div id="map">
+   </div>
+   <!--map -->
+   <script>
+            var locations =<%= @venues.select(:latitude, :longitude,:id, :image).to_json.html_safe %>
+           // Initialize and add the map
+           function initMap() {
+             // The location of marker
+              // The map, centered at marker
+             var bounds = new google.maps.LatLngBounds();  //create boundary box, no fixed dimensions
+              var map = new google.maps.Map(
+                 document.getElementById('map'), {zoom: 9, center: marker});
+             // The marker, positioned at marker
+             var marker = new google.maps.Marker({position: marker, map: map, icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'});
+              var infoWindow = new google.maps.InfoWindow({maxWidth:320});
+            ////////////////////////////////////////////////////
+             for(let i = 0; i<locations.length; i++){
+               var m = new google.maps.Marker({
+                 position: {
+                   lat: locations[i].latitude,
+                   lng: locations[i].longitude
+                 },
+                 map:map,
+                 content: `<div>${locations[i].name}</div><div class="mapImageContainer"><img class='windowImg' src=${locations[i].image}></div><a href="/attractions/${locations[i].id}">Go to attraction</a>`, url: `/attractions/${locations[i].id}`
+                });
+               bounds.extend(m.getPosition());  //boundary box stretches by each marker's (m) position
+               google.maps.event.addListener(m, 'click', function() {
+                 infoWindow.setContent(this.content);
+                 infoWindow.open(this.getMap(), this);
+             })
+           }
+           /////////////////////////////////////////////////////////
+           map.fitBounds(bounds);
+           var listener = google.maps.event.addListener(map, "idle", function() {  //single attraction, do not zoom in all the way
+             if (map.getZoom() > 16) map.setZoom(16);
+             google.maps.event.removeListener(listener);
+           });
+           // map.setZoom(9);  //centre on attraction
+           }; //end of initmap
+       </script>
+    <!--Load the API from the specified URL
+    * The async attribute allows the browser to render the page while the API loads
+    * The key parameter will contain your own API key (which is not needed for this tutorial)
+    * The callback parameter executes the initMap() function
+    -->
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfdeYzd23jyR3fKx0oRtdlqCDK-NEzwcI&callback=initMap">
      </script>
-
 </div>
 
 
