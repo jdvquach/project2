@@ -1,5 +1,5 @@
 
-<div class="form-group">
+<div class="form-group-attraction"">
     <%= form_for @attraction, html: {multipart: true} do |f| %>
     <fieldset>
         <%= f.label :name %>
@@ -19,9 +19,15 @@
       </fieldset>
 
       <fieldset>
+        <%= f.label :description %>
+        <%= f.text_field :description , class:"form-control" %>
+      </fieldset>
+
+      <fieldset>
         <%= f.label :region_id, 'Region' %>  <!--drop down selection-->
         <%= f.collection_select :region_id, Region.all, :id, :name, prompt: 'Please choose a region' , class:"form-control"%>
       </fieldset>
+
 
       <fieldset>
         <%= f.label :image, 'Image URL' %>
