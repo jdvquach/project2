@@ -5,6 +5,6 @@ $(document).ready(function(){
     let distance  = parseInt(distanceString);
     console.log(distance);
 
-  
-  debugger;
+
+  // debugger;
 })

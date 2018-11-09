@@ -1,4 +1,7 @@
 class RegionsController < ApplicationController
+
+
+
   def new
   end
 

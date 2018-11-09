@@ -9,7 +9,7 @@ class AttractionsController < ApplicationController
   def create
     @attraction = Attraction.new(attraction_params)
     @attraction.save
-    redirect_to attractions_path
+    redirect_to regions_path
   end
 
   def index
@@ -33,6 +33,7 @@ class AttractionsController < ApplicationController
 
   def edit
     @attraction = Attraction.find(params[:id])
+
   end
 
   def update
